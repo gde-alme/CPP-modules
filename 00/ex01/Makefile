@@ -6,7 +6,7 @@
 #    By: gde-alme <gde-alme@student.42lisboa.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/26 19:21:31 by gde-alme          #+#    #+#              #
-#    Updated: 2023/01/28 17:54:33 by gde-alme         ###   ########.fr        #
+#    Updated: 2023/01/28 18:51:48 by gde-alme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ FLAGS	= -g -Wall -Wextra -Werror -std=c++98
 RM	= rm -rf
 
 SRCS	= ${wildcard *.cpp}
-HEADER	= contact.hpp phonebook.hpp
+HEADER	= Contact.hpp PhoneBook.hpp
 TRASH	= ${wildcard *.gch}
 
 .PHONY: all clean fclean re
