@@ -6,25 +6,29 @@
 #    By: gde-alme <gde-alme@student.42lisboa.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/26 19:21:31 by gde-alme          #+#    #+#              #
-#    Updated: 2023/01/26 19:21:33 by gde-alme         ###   ########.fr        #
+#    Updated: 2023/01/28 17:54:33 by gde-alme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= phonebook
+NAME	= relevantName
 
 CC	= c++
-FLAGS	= -Wall -Wextra -Werror -std=c++98
+FLAGS	= -g -Wall -Wextra -Werror -std=c++98
 
 RM	= rm -rf
 
 SRCS	= ${wildcard *.cpp}
+HEADER	= contact.hpp phonebook.hpp
+TRASH	= ${wildcard *.gch}
 
 .PHONY: all clean fclean re
 
 all:
-	g++ ${SRCS} -o ${NAME}
+	g++ ${HEADER} ${SRCS} -o ${NAME}
 
 clean:
 	${RM} ${NAME}
+fclean: clean
+	${RM} ${TRASH}
 
-re: clean all
+re: fclean all
