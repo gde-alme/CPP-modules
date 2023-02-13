@@ -6,11 +6,12 @@
 /*   By: gde-alme <gde-alme@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 19:21:17 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/01/28 19:06:16 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/01/31 12:25:01 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+#include <limits>
 
 using	std::cout;
 using	std::cin;
@@ -42,26 +43,32 @@ void	PhoneBook::add_cc(void) {
 void	PhoneBook::printContacts(void) {
 	int	index = 0;
 
-	cout << endl << "\t***********************" << endl;
-	cout << "\t*      Contacts       *" << endl;
-	cout << "\t***********************" << endl << endl;
-	//while (index)
+	std::cout << "\t ___________________________________________ " << std::endl;
+	std::cout << "\t|     Index|First Name| Last Name|  Nickname|" << std::endl;
+	std::cout << "\t|----------|----------|----------|----------|" << std::endl;
+	while (index < this->_indexsize && this->_indexsize != 0) {
+		this->_contacts[index].preview();
+		index++;
+	}
+	cout << "\t -------------------------------------------" << std::endl;
 }
 
 void	PhoneBook::search_cc(void) {
 	int	index = -1;
+	bool	valid = false;
 
 	this->printContacts();
-	while (index < 0) {
-		cout << "Enter contact index to display it's attributes: " << std::flush;
+	while (!valid) {
+		cout << "Insert contact index: " << std::flush;
 		cin >> index;
-		if (cin.good() && (index >= 0 && index <= 8)) {
-			break ;
+		if (cin.good() && (index >= 0 && index < this->_indexsize)) {
+			valid = true;
 		}
 		else {
 			cin.clear();
-			cin.ignore();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			cout << "Must be a valid index!" << std::endl;
 		}
 	}
-	cout << index << std::flush;
+	this->_contacts[index].display();
 }

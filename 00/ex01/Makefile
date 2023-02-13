@@ -6,7 +6,7 @@
 #    By: gde-alme <gde-alme@student.42lisboa.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/26 19:21:31 by gde-alme          #+#    #+#              #
-#    Updated: 2023/01/28 18:51:48 by gde-alme         ###   ########.fr        #
+#    Updated: 2023/01/31 11:53:15 by gde-alme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,3 +32,6 @@ fclean: clean
 	${RM} ${TRASH}
 
 re: fclean all
+
+test:
+	make re; ./relevantName
