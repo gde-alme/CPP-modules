@@ -16,26 +16,22 @@
 #include <iostream>
 #include <iomanip>
 
-using	std::cout;
-using	std::cin;
-using	std::string;
-
 class	Contact {
 	private:
-		string _firstname;
-		string _lastname;
-		string _nickname;
-		string _phonenumber;
-		string _darkestsecret;
+		std::string _firstname;
+		std::string _lastname;
+		std::string _nickname;
+		std::string _phonenumber;
+		std::string _darkestsecret;
 		int	_index;
 	public:
 		Contact();
 		~Contact();
 		void	init(int index);
-		string	_getInput(string prompt);
+		std::string	_getInput(std::string prompt);
 		void	preview(void);
 		void	display(void);
-		string	getPreview(string atributte);
+		std::string	getPreview(std::string atributte);
 };
 
 #endif
