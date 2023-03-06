@@ -13,12 +13,10 @@
 #include <iostream>
 #include "PhoneBook.hpp"
 
-using std::cout;
-using std::string;
-
 int	main() {
 	PhoneBook	phoneb;
-	string		input = "";
+	std::string		input = "";
+	bool	valid;
 
 	phoneb.welcome();
 	while (input.compare("EXIT")) {
@@ -26,10 +24,17 @@ int	main() {
 			phoneb.add_cc();
 		else if (input.compare("SEARCH") == 0)
 			phoneb.search_cc();
-		//cin.ignore();
-		cout << "> " << std::flush;
-		cin >> input;
-		//std::getline(cin, input); //??newline why
+		valid = false;
+		while (!valid) {
+			std::cout << "> " << std::flush;
+			std::getline(cin, input);
+			if (cin.good() && !input.empty() && input.find(32) > 999)
+				valid = true;
+			else {
+				std::cin.clear();
+				std::cout << "Not valid input!" << std::endl;
+			}
+		}
 	}
 	return (0);
 }

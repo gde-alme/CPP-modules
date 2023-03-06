@@ -13,10 +13,6 @@
 #include "PhoneBook.hpp"
 #include <limits>
 
-using	std::cout;
-using	std::cin;
-using	std::endl;
-
 PhoneBook::PhoneBook() {
 }
 
@@ -25,14 +21,14 @@ PhoneBook::~PhoneBook() {
 
 void	PhoneBook::welcome(void) {
 	this->_indexsize = 0;
-	cout << "\t-------------------------------------" << endl;
-	cout << "\tThis is your awesome PhoneBook" << endl;
-	cout << "\t-------------------------------------" << endl;
-	cout << "\tOPTIONS:" << endl << endl;;
-	cout << "\tADD" << endl;
-	cout << "\tSEARCH" << endl;
-	cout << "\tEXIT" << endl;
-	cout << "\t-------------------------------------" << endl;
+	std::cout << "\t-------------------------------------" << std::endl;
+	std::cout << "\tThis is your awesome PhoneBook" << std::endl;
+	std::cout << "\t-------------------------------------" << std::endl;
+	std::cout << "\tOPTIONS:" << std::endl << std::endl;;
+	std::cout << "\tADD" << std::endl;
+	std::cout << "\tSEARCH" << std::endl;
+	std::cout << "\tEXIT" << std::endl;
+	std::cout << "\t-------------------------------------" << std::endl;
 }
 
 void	PhoneBook::add_cc(void) {
@@ -50,7 +46,7 @@ void	PhoneBook::printContacts(void) {
 		this->_contacts[index].preview();
 		index++;
 	}
-	cout << "\t -------------------------------------------" << std::endl;
+	std::cout << "\t -------------------------------------------" << std::endl;
 }
 
 void	PhoneBook::search_cc(void) {
@@ -59,15 +55,15 @@ void	PhoneBook::search_cc(void) {
 
 	this->printContacts();
 	while (!valid) {
-		cout << "Insert contact index: " << std::flush;
-		cin >> index;
+		std::cout << "Insert contact index: " << std::flush;
+		std::cin >> index;
 		if (cin.good() && (index >= 0 && index < this->_indexsize)) {
 			valid = true;
 		}
 		else {
 			cin.clear();
 			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			cout << "Must be a valid index!" << std::endl;
+			std::cout << "Must be a valid index!" << std::endl;
 		}
 	}
 	this->_contacts[index].display();
