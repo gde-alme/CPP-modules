@@ -1,14 +1,16 @@
-#include "SedLooser.hpp"
+#include "SedLoser.hpp"
 
 /* Constructor */
-SedLooser::SedLooser() {
+SedLoser::SedLoser(std::string file_n) {
+	SedLoser::openFile(file_n);
+	std::cout << this->fileName << std::endl;
 }
 
 /* Destructor */
-SedLooser::~SedLooser() {
+SedLoser::~SedLoser() {
 }
 
-bool	SedLooser::openFile(std::string file_n) {
+bool	SedLoser::openFile(std::string file_n) {
 	if (this->iFileStream.is_open())
 		this->iFileStream.close();
 	if (file_n == "") {

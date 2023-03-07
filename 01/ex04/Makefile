@@ -1,4 +1,4 @@
-NAME	= sedflosers
+NAME	= SedLosers
 
 
 CC	= c++
