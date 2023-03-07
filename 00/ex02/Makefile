@@ -6,32 +6,55 @@
 #    By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/07 17:00:30 by gde-alme          #+#    #+#              #
-#    Updated: 2023/03/07 17:00:31 by gde-alme         ###   ########.fr        #
+#    Updated: 2023/03/07 20:04:41 by gde-alme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME    = ExcellIsBad
+# ================================================= #
+NAME		=	excellIsBadForYou
+# ================================================= #
 
-CC      = c++
-FLAGS   = -g -Wall -Wextra -Werror -std=c++98
+# ================================================= #
+SRCS_DIR	=	./
+SRCS		=	$(wildcard *.cpp)
+# ================================================= #
 
-RM      = rm -rf
+# ================================================= #
+INC			=	$(wildcard *.hpp)
+# ================================================= #
 
-SRCS    = ${wildcard *.cpp}
-HEADER  = Account.hpp
-TRASH   = ${wildcard *.gch}
+# ================================================= #
+OBJS_DIR	=	obj/
+OBJ			=	$(SRCS:%.cpp=%.o)
+OBJS		=	$(addprefix $(OBJS_DIR), $(OBJ))
+# ================================================= #
 
-.PHONY: all clean fclean re
+# ================================================= #
+CC			=	@g++
+FLAGS		=	-Wall -Wextra -Werror -std=c++98
+RM			=	@rm -rf
+# ================================================= #
 
-all:
-	g++ ${HEADER} ${SRCS} -o ${NAME}
+# ================================================= #
+$(OBJS_DIR)%.o :	$(SRCS_DIR)%.cpp
+	@mkdir -p $(OBJS_DIR)
+	@echo "\033[0;32mCompiling $<"
+	$(CC) $(FLAGS) -c $< -o $@
+
+$(NAME): $(OBJS)
+	$(CC) $(INC) $(FLAGS) -o $(NAME) $(OBJS)
+
+all: $(NAME)
 
 clean:
-	${RM} ${NAME}
-fclean:	clean
-	${RM} ${TRASH}
+	@echo "\033[0;32mCleaning: $(OBJS_DIR)"
+	$(RM) $(OBJS_DIR)
+	
+fclean: clean
+	@echo "\033[0;32mCleaning: $(NAME)"
+	$(RM) $(NAME)
 
 re: fclean all
+# ================================================= #
 
-test:
-	make re; ./ExcellIsBad
+.PHONY: all clean fclean re

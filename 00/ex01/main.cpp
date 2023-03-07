@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gde-alme <gde-alme@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 19:21:38 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/01/28 18:56:21 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/03/07 19:53:39 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	main() {
 		valid = false;
 		while (!valid) {
 			std::cout << "> " << std::flush;
-			std::getline(cin, input);
-			if (cin.good() && !input.empty() && input.find(32) > 999)
+			std::getline(std::cin, input);
+			if (std::cin.good() && !input.empty() && input.find(32) > 999)
 				valid = true;
 			else {
 				std::cin.clear();

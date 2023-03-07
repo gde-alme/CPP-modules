@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gde-alme <gde-alme@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 18:25:22 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/01/31 12:19:12 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/03/07 19:50:44 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ Contact::Contact() {
 Contact::~Contact() {
 }
 
-string	Contact::_getInput(string prompt) {
+std::string	Contact::_getInput(std::string prompt) {
 	std::string	input = "";
 	bool	valid = false;
 
 	while (!valid) {
 		std::cout << prompt << std::flush;
-		std::getline(cin, input);
-		if (cin.good() && !input.empty())
+		std::getline(std::cin, input);
+		if (std::cin.good() && !input.empty())
 			valid = true;
 		else {
 			std::cin.clear();
@@ -45,7 +45,7 @@ void	Contact::init(int index) {
 	this->_index = index;
 }
 
-string	Contact::getPreview(string atributte) {
+std::string	Contact::getPreview(std::string atributte) {
 	std::string	resized;
 
 	if (atributte.length() > 10) {

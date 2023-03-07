@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gde-alme <gde-alme@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 19:21:17 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/01/31 12:25:01 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/03/07 19:54:33 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,12 @@ void	PhoneBook::search_cc(void) {
 	while (!valid) {
 		std::cout << "Insert contact index: " << std::flush;
 		std::cin >> index;
-		if (cin.good() && (index >= 0 && index < this->_indexsize)) {
+		if (std::cin.good() && (index >= 0 && index < this->_indexsize)) {
 			valid = true;
 		}
 		else {
-			cin.clear();
-			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			std::cout << "Must be a valid index!" << std::endl;
 		}
 	}
