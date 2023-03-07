@@ -3,35 +3,53 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gde-alme <gde-alme@student.42lisboa.com>   +#+  +:+       +#+         #
+#    By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/26 19:21:31 by gde-alme          #+#    #+#              #
-#    Updated: 2023/01/31 11:53:15 by gde-alme         ###   ########.fr        #
+#    Updated: 2023/03/07 18:51:06 by gde-alme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= relevantName
+# ================================================= #
+NAME		=	megaphone
+# ================================================= #
 
-CC	= c++
-FLAGS	= -g -Wall -Wextra -Werror -std=c++98
+# ================================================= #
+SRCS_DIR	=	./
+# ================================================= #
 
-RM	= rm -rf
+# ================================================= #
+OBJS_DIR	=	obj/
+OBJ			=	$(SRCS:%.cpp=%.o)
+OBJS		=	$(addprefix $(OBJS_DIR), $(OBJ))
+# ================================================= #
 
-SRCS	= ${wildcard *.cpp}
-HEADER	= Contact.hpp PhoneBook.hpp
-TRASH	= ${wildcard *.gch}
+# ================================================= #
+CC			=	@g++
+FLAGS		=	-Wall -Wextra -Werror -std=c++98
+RM			=	@rm -rf
+# ================================================= #
 
-.PHONY: all clean fclean re
+# ================================================= #
+$(OBJS_DIR)%.o :	$(SRCS_DIR)%.cpp
+	@mkdir -p $(OBJS_DIR)
+	@echo "\033[0;32mCompiling $<"
+	$(CC) $(FLAGS) -c $< -o $@
 
-all:
-	g++ ${HEADER} ${SRCS} -o ${NAME}
+$(NAME): $(OBJS)
+	$(CC) $(FLAGS) -o $(NAME) $(OBJS)
+
+all: $(NAME)
 
 clean:
-	${RM} ${NAME}
+	@echo "\033[0;32mCleaning: $(OBJS_DIR)"
+	$(RM) $(OBJS_DIR)
+	
 fclean: clean
-	${RM} ${TRASH}
+	@echo "\033[0;32mCleaning: $(NAME)"
+	$(RM) $(NAME)
 
 re: fclean all
+# ================================================= #
 
-test:
-	make re; ./relevantName
+.PHONY: all clean fclean re
