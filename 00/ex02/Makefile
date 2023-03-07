@@ -12,14 +12,14 @@ TRASH   = ${wildcard *.gch}
 .PHONY: all clean fclean re
 
 all:
-        g++ ${HEADER} ${SRCS} -o ${NAME}
+	g++ ${HEADER} ${SRCS} -o ${NAME}
 
 clean:
-        ${RM} ${NAME}
-fclean: clean
-        ${RM} ${TRASH}
+	${RM} ${NAME}
+fclean:	clean
+	${RM} ${TRASH}
 
 re: fclean all
 
 test:
-        make re; ./ExcellIsBad
+	make re; ./ExcellIsBad
