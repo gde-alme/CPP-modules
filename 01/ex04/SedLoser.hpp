@@ -10,6 +10,7 @@ class SedLoser {
 		~SedLoser(void);
 
 		bool	openFile(std::string file_n);
+		bool	replace(std::string s1, std::string s2);
 
 	private:
 		std::string fileName;

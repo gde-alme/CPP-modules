@@ -23,3 +23,8 @@ bool	SedLoser::openFile(std::string file_n) {
 		return (true);
 	}
 }
+
+bool	SedLoser::replace(std::string s1, std::string s2) {
+	std::string	replaced;
+	size_t	s1Len = s1.length();
+}
