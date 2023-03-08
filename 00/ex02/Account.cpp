@@ -62,22 +62,22 @@ int Account::getNbWithdrawals(void) {
 
 void Account::displayAccountsInfos(void) {   
 	Account::_displayTimestamp();
-	std::cout << "accounts:" << Account::getNbAccounts() << ";";
-	std::cout << "total:" << Account::getTotalAmount() << ";";
-	std::cout << "deposits:" << Account::getNbDeposits() << ";";
+	std::cout << "accounts:" << Account::getNbAccounts() << ";" << std::flush;
+	std::cout << "total:" << Account::getTotalAmount() << ";" << std::flush;
+	std::cout << "deposits:" << Account::getNbDeposits() << ";" << std::flush;
 	std::cout << "withdrawals:" << Account::getNbWithdrawals() << std::endl;
 }
 
 void    Account::makeDeposit(int deposit) {
 	Account::_displayTimestamp();
-	std::cout << "index:" << this->_accountIndex << ";";
-	std::cout << "p_amount:" << Account::checkAmount() << ";";
+	std::cout << "index:" << this->_accountIndex << ";" << std::flush;
+	std::cout << "p_amount:" << Account::checkAmount() << ";" << std::flush;
 	if (deposit < 0)
 		std::cout << "deposit:refused" << std::endl;
 	else {
-		std::cout << "deposit:" << deposit << ";";
+		std::cout << "deposit:" << deposit << ";" << std::flush;
 		this->_amount += deposit;
-		std::cout << "amount:" << Account::checkAmount() << ";";
+		std::cout << "amount:" << Account::checkAmount() << ";" << std::flush;
 		this->_nbDeposits++;
 		Account::_totalNbDeposits++;
 		std::cout << "nb_deposits:" << this->_nbDeposits << std::endl;
@@ -87,7 +87,7 @@ void    Account::makeDeposit(int deposit) {
 bool    Account::makeWithdrawal(int withdrawal) {
 	Account::_displayTimestamp();
 	std::cout << "index:" << this->_accountIndex << ";";
-	std::cout << "p_amount" << Account::checkAmount() << ";";
+	std::cout << "p_amount:" << Account::checkAmount() << ";";
 	if (withdrawal < 0 || Account::checkAmount() - withdrawal < 0) {
 		std::cout << "withdrawal:refused" << std::endl;
 		return (false);
@@ -123,5 +123,5 @@ void    Account::_displayTimestamp(void) {
     std::cout << std::setfill('0') << std::setw(2) << t_n->tm_mday << "_";
     std::cout << std::setfill('0') << std::setw(2) << t_n->tm_hour;
     std::cout << std::setfill('0') << std::setw(2) << t_n->tm_min;
-    std::cout << std::setfill('0') << std::setw(2) << t_n->tm_sec << "]" << std::flush;
+    std::cout << std::setfill('0') << std::setw(2) << t_n->tm_sec << "] " << std::flush;
 }
