@@ -28,15 +28,15 @@ std::string	Contact::_getInput(std::string prompt) {
 		if (std::cin.good() && !input.empty())
 			valid = true;
 		else {
-			std::cin.clear();
 			std::cout << "Invalid input!" << std::endl;
 		}
+		std::cin.clear();
+		//std::cin.ignore(10000, '\n');
 	}
 	return (input);
 }
 
 void	Contact::init(int index) {
-	//cin.ignore(); caused new line in fd(0) ?
 	this->_firstname = this->_getInput("Enter first name: ");
 	this->_lastname = this->_getInput("Enter last name: ");
 	this->_nickname = this->_getInput("Enter nickname: ");
@@ -58,10 +58,13 @@ std::string	Contact::getPreview(std::string atributte) {
 }
 
 void	Contact::preview(void) {
-	std::cout << "\t|" << std::setw(10) << this->_index << "|" << std::setw(10) << this->getPreview(this->_firstname) << "|" << std::setw(10) << this->_lastname << "|" << std::setw(10) << this->_nickname << "|" << std::endl;
+	std::cout << "\t|" << std::setw(10) << this->_index << "|" << std::setw(10) << this->getPreview(this->_firstname) \
+		<< "|" << std::setw(10) << this->getPreview(this->_lastname) << "|" << std::setw(10) \
+		<< this->getPreview(this->_nickname) << "|" << std::endl;
 }
 
 void	Contact::display(void) {
+	std::cin.ignore(10000, '\n');
 	std::cout << "\t" << std::setw(20) << "First Name -> " << this->_firstname << std::endl;
 	std::cout << "\t" << std::setw(20) << "Last Name -> " << this->_lastname << std::endl;
 	std::cout << "\t" << std::setw(20) << "Nick Name -> " << this->_nickname << std::endl;

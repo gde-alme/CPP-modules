@@ -20,7 +20,7 @@ PhoneBook::~PhoneBook() {
 }
 
 void	PhoneBook::welcome(void) {
-	this->_indexsize = 0;
+	this->_indexsize = 1;
 	std::cout << "\t-------------------------------------" << std::endl;
 	std::cout << "\tThis is your awesome PhoneBook" << std::endl;
 	std::cout << "\t-------------------------------------" << std::endl;
@@ -37,7 +37,7 @@ void	PhoneBook::add_cc(void) {
 }
 
 void	PhoneBook::printContacts(void) {
-	int	index = 0;
+	int	index = 1;
 
 	std::cout << "\t ___________________________________________ " << std::endl;
 	std::cout << "\t|     Index|First Name| Last Name|  Nickname|" << std::endl;
@@ -50,21 +50,21 @@ void	PhoneBook::printContacts(void) {
 }
 
 void	PhoneBook::search_cc(void) {
-	int	index = -1;
+	int	index = 1;
 	bool	valid = false;
 
 	this->printContacts();
 	while (!valid) {
 		std::cout << "Insert contact index: " << std::flush;
 		std::cin >> index;
-		if (std::cin.good() && (index >= 0 && index < this->_indexsize)) {
+		if (std::cin.good() && (index > 0 && index < this->_indexsize)) {
 			valid = true;
 		}
 		else {
-			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			std::cout << "Must be a valid index!" << std::endl;
 		}
+		std::cin.clear();
 	}
 	this->_contacts[index].display();
 }

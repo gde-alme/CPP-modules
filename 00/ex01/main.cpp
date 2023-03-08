@@ -28,12 +28,14 @@ int	main() {
 		while (!valid) {
 			std::cout << "> " << std::flush;
 			std::getline(std::cin, input);
-			if (std::cin.good() && !input.empty() && input.find(32) > 999)
+			if (std::cin.good() && !input.empty() && input.find(32) > 999 && (\
+				input.compare("EXIT") == 0 || input.compare("ADD") == 0 || input.compare("SEARCH") == 0))
 				valid = true;
 			else {
-				std::cin.clear();
-				std::cout << "Not valid input!" << std::endl;
+				//std::cin.ignore(10000, '\n');
+				std::cout << "Not valid input!" << input << std::endl;
 			}
+			std::cin.clear();
 		}
 	}
 	return (0);
