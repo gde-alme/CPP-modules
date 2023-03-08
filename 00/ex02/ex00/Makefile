@@ -6,7 +6,7 @@
 #    By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/26 19:21:51 by gde-alme          #+#    #+#              #
-#    Updated: 2023/03/08 15:52:56 by gde-alme         ###   ########.fr        #
+#    Updated: 2023/03/07 18:54:15 by gde-alme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ RM			=	@rm -rf
 # ================================================= #
 $(OBJS_DIR)%.o :	$(SRCS_DIR)%.cpp
 	@mkdir -p $(OBJS_DIR)
-	@echo "\033[0;32mCompiling $<\033[0m"
+	@echo "\033[0;32mCompiling $<"
 	$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
@@ -43,11 +43,11 @@ $(NAME): $(OBJS)
 all: $(NAME)
 
 clean:
-	@echo "\033[0;32mCleaning: $(OBJS_DIR)\033[0m"
+	@echo "\033[0;32mCleaning: $(OBJS_DIR)"
 	$(RM) $(OBJS_DIR)
 	
 fclean: clean
-	@echo "\033[0;32mCleaning: $(NAME)\033[0m"
+	@echo "\033[0;32mCleaning: $(NAME)"
 	$(RM) $(NAME)
 
 re: fclean all
