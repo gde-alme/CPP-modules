@@ -6,7 +6,7 @@
 #    By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/07 17:00:30 by gde-alme          #+#    #+#              #
-#    Updated: 2023/03/07 20:04:41 by gde-alme         ###   ########.fr        #
+#    Updated: 2023/03/08 15:43:36 by gde-alme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,4 +57,8 @@ fclean: clean
 re: fclean all
 # ================================================= #
 
-.PHONY: all clean fclean re
+log:
+	@echo "\033[0;32mExecuting and saving output in my_log.log"
+	@./excellIsBadForYou >> my_log.log
+
+.PHONY: all clean fclean re log
