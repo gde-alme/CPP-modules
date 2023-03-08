@@ -1,4 +1,5 @@
 #include "SedLoser.hpp"
+#include <cstdlib>
 
 /* Constructor */
 SedLoser::SedLoser(void) {
@@ -9,6 +10,8 @@ SedLoser::~SedLoser(void) {
 }
 
 std::string	SedLoser::parseLine(std::string rline, std::string s1, std::string s2) {
+	if (rline == "")
+		return (" "); /* NOT A FIX!! */
 	size_t	s1Len = s1.length();
 	for(size_t pos = 0; pos < s1Len; pos++) {
 		if (rline.compare(pos, s1Len, s1) == 0) {
