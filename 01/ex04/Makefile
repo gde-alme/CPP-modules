@@ -35,8 +35,9 @@ $(NAME): $(OBJS)
 all: $(NAME)
 
 clean:
-	@echo "\033[0;32mCleaning: $(OBJS_DIR)"
+	@echo "\033[0;32mCleaning: $(OBJS_DIR) && .replace file"
 	$(RM) $(OBJS_DIR)
+	$(RM) *.replace
 	
 fclean: clean
 	@echo "\033[0;32mCleaning: $(NAME)"
