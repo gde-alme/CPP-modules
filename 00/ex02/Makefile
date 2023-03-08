@@ -30,7 +30,7 @@ OBJS		=	$(addprefix $(OBJS_DIR), $(OBJ))
 # ================================================= #
 
 # ================================================= #
-CC			=	@g++
+CXX			=	@c++
 FLAGS		=	-Wall -Wextra -Werror -std=c++98
 RM			=	@rm -rf
 # ================================================= #
@@ -39,10 +39,10 @@ RM			=	@rm -rf
 $(OBJS_DIR)%.o :	$(SRCS_DIR)%.cpp
 	@mkdir -p $(OBJS_DIR)
 	@echo "\033[0;32mCompiling $<"
-	$(CC) $(FLAGS) -c $< -o $@
+	$(CXX) $(FLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-	$(CC) $(INC) $(FLAGS) -o $(NAME) $(OBJS)
+	$(CXX) $(INC) $(FLAGS) -o $(NAME) $(OBJS)
 
 all: $(NAME)
 

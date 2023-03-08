@@ -58,7 +58,7 @@ std::string	Contact::getPreview(std::string atributte) {
 }
 
 void	Contact::preview(void) {
-	std::cout << "\t|" << std::setw(10) << this->_index << "|" << std::setw(10) << this->getPreview(this->_firstname) \
+	std::cout << "\t|" << std::setw(10) << this->_index  + 1 << "|" << std::setw(10) << this->getPreview(this->_firstname) \
 		<< "|" << std::setw(10) << this->getPreview(this->_lastname) << "|" << std::setw(10) \
 		<< this->getPreview(this->_nickname) << "|" << std::endl;
 }
