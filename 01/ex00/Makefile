@@ -1,18 +1,48 @@
-NAME	= braiiiinzZ
+# ================================================= #
+NAME		=	braiiiinzZ
+# ================================================= #
 
-CC	= c++
-FLAGS	= -Wall -Wextra -Werror -std=c++98
+# ================================================= #
+SRCS_DIR	=	./
+SRCS		=	$(wildcard *.cpp)
+# ================================================= #
 
-RM	= rm -rf
+# ================================================= #
+INC			=	$(wildcard *.hpp)
+# ================================================= #
 
-SRCS	= ${wildcard *.cpp}
-HEADER	= Zombie.hpp
-.PHONY: all clean fclean re
+# ================================================= #
+OBJS_DIR	=	obj/
+OBJ			=	$(SRCS:%.cpp=%.o)
+OBJS		=	$(addprefix $(OBJS_DIR), $(OBJ))
+# ================================================= #
 
-all:
-	g++ ${HEADER} ${SRCS} -o ${NAME}
+# ================================================= #
+CC			=	@g++
+FLAGS		=	-Wall -Wextra -Werror -std=c++98
+RM			=	@rm -rf
+# ================================================= #
+
+# ================================================= #
+$(OBJS_DIR)%.o :	$(SRCS_DIR)%.cpp
+	@mkdir -p $(OBJS_DIR)
+	@echo "\033[0;32mCompiling $<"
+	$(CC) $(FLAGS) -c $< -o $@
+
+$(NAME): $(OBJS)
+	$(CC) $(INC) $(FLAGS) -o $(NAME) $(OBJS)
+
+all: $(NAME)
 
 clean:
-	${RM} ${NAME}
+	@echo "\033[0;32mCleaning: $(OBJS_DIR)"
+	$(RM) $(OBJS_DIR)
+	
+fclean: clean
+	@echo "\033[0;32mCleaning: $(NAME)"
+	$(RM) $(NAME)
 
-re: clean all
+re: fclean all
+# ================================================= #
+
+.PHONY: all clean fclean re

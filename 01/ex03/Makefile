@@ -1,20 +1,48 @@
+# ================================================= #
 NAME	= violence
+# ================================================= #
 
+# ================================================= #
+SRCS_DIR	=	./
+SRCS		=	$(wildcard *.cpp)
+# ================================================= #
 
-CC	= c++
-FLAGS	= -Wall -Wextra -Werror -std=c++98
+# ================================================= #
+INC			=	$(wildcard *.hpp)
+# ================================================= #
 
-RM	= rm -rf
+# ================================================= #
+OBJS_DIR	=	obj/
+OBJ			=	$(SRCS:%.cpp=%.o)
+OBJS		=	$(addprefix $(OBJS_DIR), $(OBJ))
+# ================================================= #
 
-SRCS	= ${wildcard *.cpp}
-HEADER	= Weapon.hpp HumanA.hpp HumanB.hpp
+# ================================================= #
+CC			=	@g++
+FLAGS		=	-Wall -Wextra -Werror -std=c++98
+RM			=	@rm -rf
+# ================================================= #
 
-.PHONY: all clean fclean re
+# ================================================= #
+$(OBJS_DIR)%.o :	$(SRCS_DIR)%.cpp
+	@mkdir -p $(OBJS_DIR)
+	@echo "\033[0;32mCompiling $<"
+	$(CC) $(FLAGS) -c $< -o $@
 
-all:
-	g++ ${SRCS} -o ${NAME}
+$(NAME): $(OBJS)
+	$(CC) $(INC) $(FLAGS) -o $(NAME) $(OBJS)
+
+all: $(NAME)
 
 clean:
-	${RM} ${NAME}
+	@echo "\033[0;32mCleaning: $(OBJS_DIR)"
+	$(RM) $(OBJS_DIR)
+	
+fclean: clean
+	@echo "\033[0;32mCleaning: $(NAME)"
+	$(RM) $(NAME)
 
-re: clean all
+re: fclean all
+# ================================================= #
+
+.PHONY: all clean fclean re
