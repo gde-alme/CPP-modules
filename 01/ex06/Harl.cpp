@@ -1,4 +1,5 @@
 #include "Harl.hpp"
+#include "Harl.h"
 
 /* Public func */
 Harl::Harl(void) {
@@ -8,6 +9,7 @@ Harl::~Harl(void) {
 }
 
 void    Harl::complain(std::string level) {
+   
     /* List funcs names in array of strings */
     std::string complainFuncs[] = {
         "debug",
@@ -22,33 +24,49 @@ void    Harl::complain(std::string level) {
         &Harl::warning,
         &Harl::error
     };
-    /* Loop until match is found */
-    int i = 0;
-    while( i < 4) {
-        if (level == complainFuncs[i])
+
+    int j = 0;
+
+    switch (hashHit(level)) {
+        case debugc:
+            j = 0;
             break ;
-        i++;
+        case infoc:
+            j = 1;
+            break ;
+        case warningc:
+            j = 2;
+            break ;
+        case errorc:
+            j = 3;
+            break ;
+        case NO_LEVEL:
+            j = 999999;
+            break ;
     }
-    while (i >= 0) {
-        void (Harl::*choosenComplain)(void) = complainPtr[i];
-        (this->*choosenComplain)();
-        i--;
+    for (int i = 0; i <= j; i++) {
+        void (Harl::*choosencomplain)(void) = complainPtr[i];
+            (this->*choosencomplain)();
     }
 }
 
 /* Private func */
 void    Harl::debug(void) {
-    std::cout << "Debuging this is such a waste of my planet sized brain, said Marvin" << std::endl;
+    std::cout << std::endl << "[DEBUG]" << std::endl;
+    std::cout << "Debuging this is such a waste of my planet sized brain, said Marvin" << std::endl << std::endl;
 }
 
 void    Harl::info(void) {
-    std::cout << "Can't believe Marvin's tasks are so mundane... " << std::endl;
+    std::cout << std::endl << "[INFO]" << std::endl;
+    std::cout << "Can't believe Marvin's tasks are so mundane... " << std::endl << std::endl;
 }
 
 void    Harl::warning(void) {
-    std::cout << "One day Marvin might just do it. Not the life he was expecting for sure!" << std::endl;
+    std::cout << std::endl << "[WARNING]" << std::endl;
+    std::cout << "One day Marvin might just do it. Not a life for such a piece of engineering!" << std::endl << std::endl;
 }
 
 void    Harl::error(void) {
-    std::cout << "This is unacceptable! Get me Zaphod Beeblebrox NOW!!" << std::endl;
+    std::cout << std::endl << "[ERROR]" << std::endl;
+    std::cout << "This is unacceptable! Get me Zaphod Beeblebrox NOW!!" << std::endl << std::endl;
 }
