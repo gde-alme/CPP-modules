@@ -6,12 +6,20 @@
 /*   By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:00:24 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/03/07 17:00:25 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/03/10 13:42:28 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __ACCOUNT_H__
-#define __ACCOUNT_H__
+#ifndef __ACCOUNT_HPP__
+#define __ACCOUNT_HPP__
+
+#include <ctime>
+#include <iostream>
+#include <iomanip>
+
+#ifndef EVAL
+# define EVAL false
+#endif
 
 // ************************************************************************** //
 //                               Account Class                                //
@@ -57,4 +65,4 @@ private:
 
 };
 
-#endif /* __ACCOUNT_H__ */
+#endif /* __ACCOUNT_HPP__ */

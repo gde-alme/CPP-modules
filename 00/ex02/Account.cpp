@@ -6,14 +6,11 @@
 /*   By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:00:16 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/03/07 17:00:17 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/03/10 13:35:41 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Account.hpp"
-#include <ctime>
-#include <iostream>
-#include <iomanip>
 
 //vars init
 int	Account::_nbAccounts = 0;
@@ -116,6 +113,10 @@ void    Account::displayStatus(void) const {
 }
 
 void    Account::_displayTimestamp(void) {
+	if (EVAL) {
+		std::cout << "[19920104_091532] " << std::flush;
+		return ;
+	}
     std::time_t t = std::time(0);
     std::tm *t_n = std::localtime(&t);
     std::cout << "[" << t_n->tm_year + 1900;
