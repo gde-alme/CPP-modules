@@ -6,7 +6,7 @@
 /*   By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:00:24 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/03/10 13:42:28 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/03/10 14:40:25 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,6 @@ private:
 	int				_amount;
 	int				_nbDeposits;
 	int				_nbWithdrawals;
-
-	Account( void );
 
 };
 

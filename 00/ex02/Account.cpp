@@ -6,7 +6,7 @@
 /*   By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:00:16 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/03/10 13:35:41 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/03/10 14:45:34 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,10 @@ int	Account::_totalNbWithdrawals = 0;
 Account::Account(int initial_deposit) : _accountIndex(Account::_nbAccounts), 
 				_amount(initial_deposit), _nbDeposits(0), _nbWithdrawals(0) {
 	Account::_nbAccounts++;
-	Account::_totalAmount += Account::checkAmount();
+	Account::_totalAmount += initial_deposit;
 	Account::_displayTimestamp();
 	std::cout << "index:" << this->_accountIndex << ";";
 	std::cout << "amount:" << Account::checkAmount() << ";created" << std::endl;
-}
-
-/* Private constructor */
-Account::Account(void) {
 }
 
 /* Destructor */
@@ -74,6 +70,7 @@ void    Account::makeDeposit(int deposit) {
 	else {
 		std::cout << "deposit:" << deposit << ";" << std::flush;
 		this->_amount += deposit;
+		this->_totalAmount += deposit;
 		std::cout << "amount:" << Account::checkAmount() << ";" << std::flush;
 		this->_nbDeposits++;
 		Account::_totalNbDeposits++;
@@ -95,6 +92,7 @@ bool    Account::makeWithdrawal(int withdrawal) {
 		Account::_totalAmount -= withdrawal;
 		std::cout << "amount:" << Account::checkAmount() << ";";
 		this->_nbWithdrawals++;
+		this->_totalNbWithdrawals++;
 		std::cout << "nb_withdrawals:" << this->_nbWithdrawals << std::endl;
 		return (true);
 	}
