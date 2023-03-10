@@ -41,7 +41,7 @@ void    Harl::complain(std::string level) {
             j = 3;
             break ;
         case NO_LEVEL:
-            j = 999999;
+            j = -1;
             break ;
     }
     for (int i = 0; i <= j; i++) {

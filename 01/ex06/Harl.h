@@ -1,6 +1,8 @@
 #ifndef __HARL_H__
 #define __HARL_H__
 
+#include "Harl.hpp"
+
 enum string_code {
     debugc,
     infoc,
