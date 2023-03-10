@@ -26,7 +26,7 @@ RM			=	@rm -rf
 # ================================================= #
 $(OBJS_DIR)%.o :	$(SRCS_DIR)%.cpp
 	@mkdir -p $(OBJS_DIR)
-	@echo "\033[0;32mCompiling $<"
+	@echo "\033[0;32mCompiling $<\033[0m"
 	$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
@@ -35,11 +35,11 @@ $(NAME): $(OBJS)
 all: $(NAME)
 
 clean:
-	@echo "\033[0;32mCleaning: $(OBJS_DIR)"
+	@echo "\033[0;32mCleaning: $(OBJS_DIR)\033[0m"
 	$(RM) $(OBJS_DIR)
 	
 fclean: clean
-	@echo "\033[0;32mCleaning: $(NAME)"
+	@echo "\033[0;32mCleaning: $(NAME)\033[0m"
 	$(RM) $(NAME)
 
 re: fclean all
