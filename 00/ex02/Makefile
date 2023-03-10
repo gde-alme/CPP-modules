@@ -6,7 +6,7 @@
 #    By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/07 17:00:30 by gde-alme          #+#    #+#              #
-#    Updated: 2023/03/10 13:46:10 by gde-alme         ###   ########.fr        #
+#    Updated: 2023/03/10 13:49:15 by gde-alme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,4 +66,4 @@ eval:
 	@g++ -D EVAL=true $(FLAGS) $(INC) $(SRCS) -o excellIsBadForYou
 	@./excellIsBadForYou > my_log.log
 
-.PHONY: all clean fclean re log
+.PHONY: all clean fclean re log eval
