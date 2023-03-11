@@ -13,11 +13,15 @@ std::string	SedLoser::parseLine(std::string rline, std::string s1, std::string s
 	if (rline == "")
 		return (""); /* NOT A FIX!! */
 	size_t	s1Len = s1.length();
-	for(size_t pos = 0; pos < s1Len; pos++) {
+	size_t		pos = 0;
+	while (pos < rline.length()) {
 		if (rline.compare(pos, s1Len, s1) == 0) {
 			rline.erase(pos, s1Len);
 			rline.insert(pos, s2);
+			pos += s2.length();
 		}
+		else
+			pos++;
 	}
 	return (rline);
 }
@@ -40,17 +44,13 @@ bool	SedLoser::openFile(std::string pathFile) {
 bool	SedLoser::replace(std::string s1, std::string s2) {
 	std::string	rline;
 	std::string	nline = "";
-	if (s1 == "" || s2 == "") {
-		std::cout << "Not valid strings as params" << std::endl;
-		return (false);
-	}
 	while (std::getline(this->iFileStream, rline)) {
 		rline = SedLoser::parseLine(rline, s1, s2);
-		if (nline != "")
-			nline += "\n";
+		//if (rline == "")
 		nline += rline;
+		nline += "\n";
 	}
-	s3 = nline;
+	this->s3 = nline;
 	this->iFileStream.close();
 	return (true);
 }

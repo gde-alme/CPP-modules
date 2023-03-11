@@ -6,7 +6,7 @@
 #    By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 21:22:11 by gde-alme          #+#    #+#              #
-#    Updated: 2023/03/10 21:24:04 by gde-alme         ###   ########.fr        #
+#    Updated: 2023/03/11 01:51:12 by gde-alme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME		=	braiiiinzZ
 
 # ================================================= #
 SRCS_DIR	=	./
-SRCS		=	newChump.cpp newZombie.cpp Zombie.cpp
+SRCS		=	randomChump.cpp newZombie.cpp Zombie.cpp
 SRCS		+=	main.cpp
 # ================================================= #
 
