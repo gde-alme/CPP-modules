@@ -6,7 +6,7 @@
 /*   By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 03:00:03 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/03/11 03:00:04 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/03/16 14:24:45 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ SedLoser::~SedLoser(void) {
 
 std::string	SedLoser::parseLine(std::string rline, std::string s1, std::string s2) {
 	if (rline == "")
-		return (""); /* NOT A FIX!! */
+		return ("");
 	size_t	s1Len = s1.length();
 	size_t		pos = 0;
 	while (pos < rline.length()) {
@@ -58,7 +58,6 @@ bool	SedLoser::replace(std::string s1, std::string s2) {
 	std::string	nline = "";
 	while (std::getline(this->iFileStream, rline)) {
 		rline = SedLoser::parseLine(rline, s1, s2);
-		//if (rline == "")
 		nline += rline;
 		nline += "\n";
 	}
