@@ -6,7 +6,7 @@
 /*   By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 03:00:03 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/03/16 14:24:45 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/03/16 16:39:58 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,12 @@ std::string	SedLoser::parseLine(std::string rline, std::string s1, std::string s
 }
 
 bool	SedLoser::openFile(std::string pathFile) {
+	struct stat sb;
 	const char *cfile = &pathFile[0];
 	if (this->iFileStream.is_open())
 		this->iFileStream.close();
-	if (pathFile == "") {
-		std::cerr << "Must be a valid fileName" << std::endl;
+	if (pathFile == "" || stat(&pathFile[0], &sb) != 0)
 		return (false);
-	}
 	else {
 		this->iFileStream.open(cfile);
 		this->fileName = pathFile;
