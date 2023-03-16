@@ -6,7 +6,7 @@
 /*   By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 03:00:07 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/03/11 03:00:08 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/03/16 16:38:36 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <sys/stat.h>
 
 class SedLoser {
 	public:

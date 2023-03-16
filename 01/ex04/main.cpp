@@ -6,7 +6,7 @@
 /*   By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 02:58:21 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/03/11 02:58:22 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/03/16 16:35:51 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ int	main(int argc, char **argv) {
 		return (2);
 	}
 
-	myLoser.openFile(pathToFile);
+	if (!(myLoser.openFile(pathToFile))) {
+		std::cout << "Error: no such file or directory" << std::endl;
+		return (1);
+	}
 	myLoser.replace(needle, replace);
 	myLoser.writeToFile();
 }

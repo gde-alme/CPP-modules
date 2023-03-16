@@ -6,7 +6,7 @@
 /*   By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 03:00:03 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/03/11 03:00:04 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/03/16 16:39:58 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ SedLoser::~SedLoser(void) {
 
 std::string	SedLoser::parseLine(std::string rline, std::string s1, std::string s2) {
 	if (rline == "")
-		return (""); /* NOT A FIX!! */
+		return ("");
 	size_t	s1Len = s1.length();
 	size_t		pos = 0;
 	while (pos < rline.length()) {
@@ -39,13 +39,12 @@ std::string	SedLoser::parseLine(std::string rline, std::string s1, std::string s
 }
 
 bool	SedLoser::openFile(std::string pathFile) {
+	struct stat sb;
 	const char *cfile = &pathFile[0];
 	if (this->iFileStream.is_open())
 		this->iFileStream.close();
-	if (pathFile == "") {
-		std::cerr << "Must be a valid fileName" << std::endl;
+	if (pathFile == "" || stat(&pathFile[0], &sb) != 0)
 		return (false);
-	}
 	else {
 		this->iFileStream.open(cfile);
 		this->fileName = pathFile;
@@ -58,7 +57,6 @@ bool	SedLoser::replace(std::string s1, std::string s2) {
 	std::string	nline = "";
 	while (std::getline(this->iFileStream, rline)) {
 		rline = SedLoser::parseLine(rline, s1, s2);
-		//if (rline == "")
 		nline += rline;
 		nline += "\n";
 	}
