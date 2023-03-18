@@ -73,7 +73,7 @@ bool	Fixed::operator<(const Fixed &opponent) const {
 			return (true);
 		return (false);
 	}
-	if (this->getRawBits() > opponent.getRawBits())
+	if (this->getRawBits() < opponent.getRawBits())
 		return (true);
 	return (false);
 }
