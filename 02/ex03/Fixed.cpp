@@ -1,31 +1,31 @@
 #include "Fixed.hpp"
 
 Fixed::Fixed() {
-	std::cout << "[FIXED] default construtor called" << std::endl;
+	//std::cout << "[FIXED] default construtor called" << std::endl;
 	this->_fixedPointValue = 0;
 }
 
 Fixed::Fixed(const int num) {
-	std::cout << "[FIXED] Int construtor called" << std::endl;
+	//std::cout << "[FIXED] Int construtor called" << std::endl;
 	this->_fixedPointValue = num << this->_fractionalBits;
 }
 
 Fixed::Fixed(const float num) {
-	std::cout << "[FIXED] Float construtor called" << std::endl;
+	//std::cout << "[FIXED] Float construtor called" << std::endl;
 	this->_fixedPointValue = roundf(num * (1 << this->_fractionalBits));
 }
 
 Fixed::Fixed(const Fixed &oldfpn) {
-	std::cout << "[FIXED] copy construtor called" << std::endl;
+	//std::cout << "[FIXED] copy construtor called" << std::endl;
 	this->_fixedPointValue = oldfpn._fixedPointValue;
 }
 
 Fixed::~Fixed() {
-	std::cout << "[FIXED] destructor called" << std::endl;
+	//std::cout << "[FIXED] destructor called" << std::endl;
 }
 
 Fixed &Fixed::operator=(const Fixed &oldfpn) {
-	std::cout << "[FIXED] copy assignment operator called" << std::endl;
+	//std::cout << "[FIXED] copy assignment operator called" << std::endl;
 	if (this != &oldfpn)
 		this->setRawBits(oldfpn.getRawBits());
 	return (*this);

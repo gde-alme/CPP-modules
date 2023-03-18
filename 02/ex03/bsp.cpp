@@ -16,13 +16,23 @@ bool	bsp(Point const a, Point const b, Point const c, Point const point) {
 		and each of the sides of the original triangle */
 	Fixed a1 = Fixed(0.5f) * abs(point.getX() * (b.getY() - c.getY()) + \
 		(b.getX() * (c.getY() - point.getY())) + \
-		(c.getY() * (point.getY() - b.getY())));
+		(c.getX() * (point.getY() - b.getY())));
+
+	Fixed a2 = Fixed(0.5f) * abs(a.getX() * (point.getY() - c.getY()) + \
+		(point.getX() * (c.getY() - a.getY())) + \
+		(c.getX() * (a.getY() - point.getY())));
+
+	Fixed a3 = Fixed(0.5f) * abs(a.getX() * (b.getY() - point.getY()) + \
+		(b.getX() * (point.getY() - a.getY())) + \
+		(point.getX() * (a.getY() - b.getY())));
 
 	/* 3. If the sum of the three triangles is equal to the area of 
 		the original triangle, then the point is inside */
-	point.getX();
-
-	std::cout << "triangle area: " << ga.toFloat() << std::endl;
-
+	if (a1 + a2 + a3 != ga)
+		return (false);
+	//std::cout << "triangle area: " << ga.toFloat() << std::endl;
+	//std::cout << "triangle1 area: " << a1.toFloat() << std::endl;
+	//std::cout << "triangle2 area: " << a2.toFloat() << std::endl;
+	//std::cout << "triangle3 area: " << a3.toFloat() << std::endl;
 	return (true);
 }

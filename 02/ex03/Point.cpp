@@ -2,17 +2,17 @@
 
 /* Default constructor */
 Point::Point(void) : _x(0), _y(0) {
-	std::cout << "[POINT] Default constructor called" << std::endl;
+	//std::cout << "[POINT] Default constructor called" << std::endl;
 }
 
 /* Init x & y constructor */
 Point::Point(const float v1, const float v2) : _x(v1), _y(v2) {
-	std::cout << "[POINT] Init values constructor called" << std::endl;
+	//std::cout << "[POINT] Init values constructor called" << std::endl;
 }
 
 /* Copy constructor */
 Point::Point(const Point &oldf) : _x(oldf._x), _y(oldf._y){
-	std::cout << "[POINT] Copy constructor called" << std::endl;
+	//std::cout << "[POINT] Copy constructor called" << std::endl;
 }
 
 Point &Point::operator=(Point const &parent) {

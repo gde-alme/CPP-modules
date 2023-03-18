@@ -1,5 +1,4 @@
 #include "Fixed.hpp"
-#include <cstdlib> /* atoi */
 
 int main(void) {
     Fixed a;
