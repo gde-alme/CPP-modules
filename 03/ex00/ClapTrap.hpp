@@ -6,7 +6,7 @@
 /*   By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 02:03:49 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/03/19 02:03:51 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/03/19 02:28:53 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ class ClapTrap {
     public:
         ClapTrap(std::string Name);
         ~ClapTrap();
+        void attack(const std::string& target);
+        void takeDamage(unsigned int amount);
+        void beRepaired(unsigned int amount);
 };
 
 #endif

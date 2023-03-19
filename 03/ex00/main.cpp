@@ -6,12 +6,12 @@
 /*   By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 02:03:54 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/03/19 02:03:56 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/03/19 02:08:35 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 int main() {
-    ClapTrap hello;
+    ClapTrap hello("Hello world");
 }
