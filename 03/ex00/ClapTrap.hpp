@@ -6,14 +6,19 @@
 /*   By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 02:03:49 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/03/19 02:28:53 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/03/19 16:36:12 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef __CLAPTRAP_HPP__
 #define __CLAPTRAP_HPP__
 
+# ifndef VERBOSE
+# define VERBOSE true
+# endif 
+
 # include <string>
+# include <iostream>
 
 class ClapTrap {
     private:
