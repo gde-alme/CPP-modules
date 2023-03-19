@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/19 02:02:21 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/03/19 02:02:22 by gde-alme         ###   ########.fr       */
+/*   Created: 2023/03/19 02:03:49 by gde-alme          #+#    #+#             */
+/*   Updated: 2023/03/19 02:03:51 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#ifndef __CLAPTRAP_HPP__
+#define __CLAPTRAP_HPP__
 
-int main(void) {
-    Fixed a;
-    Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+# include <string>
 
-    std::cout << a << std::endl;
-    std::cout << ++a << std::endl;
-    std::cout << a << std::endl;
-    std::cout << a++ << std::endl;
-    std::cout << a << std::endl;
-    std::cout << b << std::endl;
-    std::cout << Fixed::max( a, b ) << std::endl;
-    return 0;
-}
+class ClapTrap {
+    private:
+        std::string _name;
+        int     _hitPoints;
+        int     _energyPoints;
+        int     _attackDamage;
+    public:
+        ClapTrap(std::string Name);
+        ~ClapTrap();
+};
+
+#endif
