@@ -6,17 +6,11 @@
 /*   By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 02:03:44 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/03/19 17:30:23 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/03/19 17:18:28 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
-
-
-ClapTrap::ClapTrap(void) {
-	if (VERBOSE)
-		std::cout << "[ClapTrap] default constructor called" << std::endl;
-}
 
 ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
 	if (VERBOSE)
@@ -45,6 +39,15 @@ ClapTrap	&ClapTrap::operator=(const ClapTrap &cp) {
 ClapTrap::~ClapTrap() {
 	if (VERBOSE)
 		std::cout << "[ClapTrap] default destructor called" << std::endl;
+}
+
+std::string	ClapTrap::getName() const {
+	return (this->_name);
+}
+
+std::ostream	&operator<<(std::ostream & ostreamf, ClapTrap const & cp) {
+	ostreamf << cp.getName();
+	return (ostreamf);
 }
 
 void    ClapTrap::attack(const std::string &target) {
