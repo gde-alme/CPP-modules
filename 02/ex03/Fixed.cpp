@@ -6,38 +6,44 @@
 /*   By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 02:02:45 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/03/19 02:02:46 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/03/19 16:29:40 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
 Fixed::Fixed() {
-	//std::cout << "[FIXED] default construtor called" << std::endl;
+	if (VERBOSE)
+		std::cout << "[FIXED] default construtor called" << std::endl;
 	this->_fixedPointValue = 0;
 }
 
 Fixed::Fixed(const int num) {
-	//std::cout << "[FIXED] Int construtor called" << std::endl;
+	if (VERBOSE)
+		std::cout << "[FIXED] Int construtor called" << std::endl;
 	this->_fixedPointValue = num << this->_fractionalBits;
 }
 
 Fixed::Fixed(const float num) {
-	//std::cout << "[FIXED] Float construtor called" << std::endl;
+	if (VERBOSE)
+		std::cout << "[FIXED] Float construtor called" << std::endl;
 	this->_fixedPointValue = roundf(num * (1 << this->_fractionalBits));
 }
 
 Fixed::Fixed(const Fixed &oldfpn) {
-	//std::cout << "[FIXED] copy construtor called" << std::endl;
+	if (VERBOSE)
+		std::cout << "[FIXED] copy construtor called" << std::endl;
 	this->_fixedPointValue = oldfpn._fixedPointValue;
 }
 
 Fixed::~Fixed() {
-	//std::cout << "[FIXED] destructor called" << std::endl;
+	if (VERBOSE)
+		std::cout << "[FIXED] destructor called" << std::endl;
 }
 
 Fixed &Fixed::operator=(const Fixed &oldfpn) {
-	//std::cout << "[FIXED] copy assignment operator called" << std::endl;
+	if (VERBOSE)
+		std::cout << "[FIXED] copy assignment operator called" << std::endl;
 	if (this != &oldfpn)
 		this->setRawBits(oldfpn.getRawBits());
 	return (*this);

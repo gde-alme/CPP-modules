@@ -6,7 +6,7 @@
 /*   By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 02:02:38 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/03/19 02:02:39 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/03/19 15:57:20 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,9 @@ bool	bsp(Point const a, Point const b, Point const c, Point const point) {
 
 	/* 3. If the sum of the three triangles is equal to the area of 
 		the original triangle, then the point is inside */
-	if (a1 + a2 + a3 != ga)
-		return (false);
+	return (a1 + a2 + a3 == ga);
 	//std::cout << "triangle area: " << ga.toFloat() << std::endl;
 	//std::cout << "triangle1 area: " << a1.toFloat() << std::endl;
 	//std::cout << "triangle2 area: " << a2.toFloat() << std::endl;
 	//std::cout << "triangle3 area: " << a3.toFloat() << std::endl;
-	return (true);
 }

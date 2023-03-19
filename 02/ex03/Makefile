@@ -6,7 +6,7 @@
 #    By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/09 01:03:14 by gde-alme          #+#    #+#              #
-#    Updated: 2023/03/18 19:26:49 by gde-alme         ###   ########.fr        #
+#    Updated: 2023/03/19 16:31:16 by gde-alme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,9 @@ fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
+
+test: fclean
+	@g++ -D VERBOSE=false *.hpp *.cpp -o bsp
 # ================================================= #
 
 .PHONY: all clean fclean re

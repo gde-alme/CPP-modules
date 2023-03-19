@@ -6,7 +6,7 @@
 /*   By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 02:02:50 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/03/19 02:02:52 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/03/19 16:31:43 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,14 @@
 # include <iostream>
 # include <cmath>
 
+# ifndef VERBOSE
+# define VERBOSE true
+# endif
+
 class Fixed {
     private:
         int     _fixedPointValue;
-        static  const   int _fractionalBits = 8;
+        static  const   int		_fractionalBits = 8;
     public:
         Fixed();
         Fixed(const int num);
