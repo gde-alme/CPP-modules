@@ -18,7 +18,7 @@ FragTrap::FragTrap(std::string name) {
     this->setAttackDamage(100);
 }
 
-FragTrap::FragTrap(const FragTrap & cp) : ClapTrap(cp){
+FragTrap::FragTrap(const FragTrap & cp) : ClapTrap(cp) {
     if (VERBOSE)
         std::cout << "[FragTrap] copy constructor called" << std::endl;
     *this = cp; /* calls overload operator = */

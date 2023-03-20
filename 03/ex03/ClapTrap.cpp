@@ -6,13 +6,13 @@
 /*   By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 02:03:44 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/03/20 12:34:41 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/03/20 10:44:09 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap() : _name("Default"), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
+ClapTrap::ClapTrap() {
 	if (VERBOSE)
 		std::cout << "[ClapTrap] default constructor called" << std::endl;
 }
@@ -25,7 +25,10 @@ ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoint
 ClapTrap::ClapTrap(const ClapTrap &cp) {
 	if (VERBOSE)
 		std::cout << "[ClapTrap] copy constructor called" << std::endl;
-	*this = cp;
+	this->_name = cp._name;
+	this->_hitPoints = cp._hitPoints;
+	this->_energyPoints = cp._energyPoints;
+	this->_attackDamage = cp._attackDamage;
 }
 
 ClapTrap	&ClapTrap::operator=(const ClapTrap &cp) {

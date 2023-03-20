@@ -6,21 +6,26 @@
 #    By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/09 01:03:14 by gde-alme          #+#    #+#              #
-#    Updated: 2023/03/20 10:47:22 by gde-alme         ###   ########.fr        #
+#    Updated: 2023/03/20 12:42:03 by gde-alme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ================================================= #
-NAME	=	Serena,_my_love
+NAME	=	Now_its_weird
 # ================================================= #
 
 # ================================================= #
 SRCS_DIR	=	./
-SRCS		=	ClapTrap.cpp ScavTrap.cpp main.cpp
+SRCS		=	ClapTrap.cpp 
+SRCS		+=	ScavTrap.cpp 
+SRCS		+=	FragTrap.cpp
+SRCS		+=	main.cpp
 # ================================================= #
 
 # ================================================= #
-INC			=	ClapTrap.hpp ScavTrap.hpp
+INC			=	ClapTrap.hpp
+INC			+=	ScavTrap.hpp
+INC			+=	FragTrap.hpp
 # ================================================= #
 
 # ================================================= #
@@ -31,7 +36,7 @@ OBJS		=	$(addprefix $(OBJS_DIR), $(OBJ))
 
 # ================================================= #
 CC			=	@g++
-FLAGS		=	#-Wall -Wextra -Werror -std=c++98
+FLAGS		=	-Wall -Wextra -Werror -std=c++98
 RM			=	@rm -rf
 # ================================================= #
 
@@ -57,8 +62,8 @@ fclean: clean
 re: fclean all
 
 test: fclean
-	@g++ -D VERBOSE=false *.hpp *.cpp -o Serena,_my_love
-	@./Serena,_my_love
+	@g++ -D VERBOSE=false *.hpp *.cpp -o $(NAME)
+	@./$(NAME)
 # ================================================= #
 
 .PHONY: all clean fclean re

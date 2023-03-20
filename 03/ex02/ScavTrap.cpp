@@ -19,13 +19,10 @@ ScavTrap::ScavTrap(std::string name) {
     this->setAttackDamage(20);
 }
 
-ScavTrap::ScavTrap(const ScavTrap & cp) {
+ScavTrap::ScavTrap(const ScavTrap & cp) : ClapTrap(cp) {
     if (VERBOSE)
         std::cout << "[ScavTrap] copy constructor called" << std::endl;
-    this->setName(cp.getName());
-    this->setHitPoints(cp.getHitPoints());
-    this->setEnergyPoints(cp.getEnergyPoints());
-    this->setAttackDamage(cp.getAttackDamage());
+    *this = cp;
 }
 
 ScavTrap    &ScavTrap::operator=(const ScavTrap & cp) {
