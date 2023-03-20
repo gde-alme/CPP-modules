@@ -1,5 +1,4 @@
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main() {
 	ClapTrap	chad("hi");
@@ -30,4 +29,13 @@ int main() {
 	std::cout << "And his name is " << chaden << std::endl;
 
 	chaden.highFiveGuys();
+
+	DiamondTrap		chadiamond("thze best");
+
+	chadiamond.setHitPoints(424242);
+	chadiamond.setEnergyPoints(424242);
+	chadiamond.setAttackDamage(424242);
+	chadiamond.attack("all others");
+	std::cout << "My name is " << chadiamond.getMyName() << " you fools!" << std::endl;
+	chadiamond.whoAmI();
 }

@@ -21,16 +21,12 @@ FragTrap::FragTrap(std::string name) {
 FragTrap::FragTrap(const FragTrap & cp) : ClapTrap(cp) {
     if (VERBOSE)
         std::cout << "[FragTrap] copy constructor called" << std::endl;
-    *this = cp; /* calls overload operator = */
 }
 
 FragTrap & FragTrap::operator=(const FragTrap & cp) {
     if (VERBOSE)
         std::cout << "[FragTrap] copy overload operator called" << std::endl;
-    this->setName(cp.getName());
-    this->setHitPoints(cp.getHitPoints());
-    this->setEnergyPoints(cp.getEnergyPoints());
-    this->setAttackDamage(cp.getAttackDamage());
+    ClapTrap::operator=(cp);
     return (*this);
 }
 

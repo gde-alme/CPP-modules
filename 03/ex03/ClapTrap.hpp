@@ -6,7 +6,7 @@
 /*   By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 02:03:49 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/03/20 10:42:43 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/03/20 15:02:51 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <iostream>
 
 class ClapTrap {
-    private:
+    protected:
         std::string _name;
         int     _hitPoints;
         int     _energyPoints;
