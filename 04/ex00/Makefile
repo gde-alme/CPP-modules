@@ -6,7 +6,7 @@
 #    By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/09 01:03:14 by gde-alme          #+#    #+#              #
-#    Updated: 2023/03/20 19:21:37 by gde-alme         ###   ########.fr        #
+#    Updated: 2023/03/21 14:28:48 by gde-alme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,17 @@ NAME	=	polymorphism
 
 # ================================================= #
 SRCS_DIR	=	./
-SRCS		=	Animal.cpp main.cpp
+SRCS		=	Animal.cpp
+SRCS 		+=	WrongAnimal.cpp
+SRCS 		+=	WrongCat.cpp
+SRCS 		+=	Dog.cpp
+SRCS 		+=	Cat.cpp
+SRCS		+=	main.cpp
 # ================================================= #
 
 # ================================================= #
-INC			=	Animal.hpp
+INC			=	Animal.hpp WrongAnimal.hpp
+INC			+=	WrongCat.hpp Dog.hpp Cat.hpp
 # ================================================= #
 
 # ================================================= #
@@ -57,8 +63,8 @@ fclean: clean
 re: fclean all
 
 test: fclean
-	@g++ -D VERBOSE=false *.hpp *.cpp -o Serena,_my_love
-	@./Serena,_my_love
+	@g++ -D VERBOSE=false *.hpp *.cpp -o polymorphism
+	@./polymorphism
 # ================================================= #
 
 .PHONY: all clean fclean re
