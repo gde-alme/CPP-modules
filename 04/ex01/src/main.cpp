@@ -1,6 +1,5 @@
 #include "../inc/Dog.hpp"
 #include "../inc/Cat.hpp"
-#include "../inc/WrongCat.hpp"
 #include "../inc/Brain.hpp"
 
 int main() {

@@ -6,7 +6,7 @@
 #    By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/09 01:03:14 by gde-alme          #+#    #+#              #
-#    Updated: 2023/03/21 14:56:25 by gde-alme         ###   ########.fr        #
+#    Updated: 2023/03/22 12:24:40 by gde-alme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,6 @@ NAME	=	ex_01_exec
 # ================================================= #
 SRCS_DIR	=	./src/
 SRCS		=	Animal.cpp
-SRCS 		+=	WrongAnimal.cpp
-SRCS 		+=	WrongCat.cpp
 SRCS 		+=	Dog.cpp
 SRCS 		+=	Cat.cpp
 SRCS 		+=	Brain.cpp
@@ -26,8 +24,8 @@ SRCS		+=	main.cpp
 # ================================================= #
 
 # ================================================= #
-INC			=	inc/Animal.hpp inc/WrongAnimal.hpp
-INC			+=	inc/WrongCat.hpp inc/Dog.hpp inc/Cat.hpp
+INC			=	inc/Animal.hpp
+INC			+=	inc/Dog.hpp inc/Cat.hpp
 INC 		+=	inc/Brain.hpp
 # ================================================= #
 
