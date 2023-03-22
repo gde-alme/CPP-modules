@@ -27,10 +27,6 @@ Cat     &Cat::operator=(const Cat & cp) {
     return (*this);
 }
 
-std::string Cat::getType() const {
-    return (this->_type);
-}
-
 void    Cat::makeSound() const {
     std::cout << "Cat custom sound" << std::endl;
 }

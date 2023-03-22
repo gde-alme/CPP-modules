@@ -6,7 +6,7 @@
 /*   By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 03:00:18 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/03/11 03:00:19 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/03/22 19:04:14 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,22 @@ void    Harl::complain(std::string level) {
         &Harl::error
     };
     /* Loop untill match is found */
-    for (int i = 0; i < 4; i++) {
-        void (Harl::*choosenComplain)(void) = complainPtr[i];
-        if (level == complainFuncs[i])
-            (this->*choosenComplain)();
+	int i = 0;
+	void (Harl::*choosenComplain)(void) = complainPtr[i];
+    while (i < 5 && level != complainFuncs[i]) {
+		void (Harl::*choosenComplain)(void) = complainPtr[i];
+		i++;
     }
+	// if (i < 4)
+	//{
+	//	        void (Harl::*choosenComplain)(void) = complainPtr[i];
+    //        (this->*choosenComplain)();
+	//}
+	for (int j = 0; (level == complainFuncs[i]) && (j == 0); j++) {
+		void (Harl::*choosenComplain)(void) = complainPtr[i];
+		(this->*choosenComplain)();
+		j++;
+	}
 }
 
 /* Private func */
