@@ -6,6 +6,7 @@
 
 class Cat : public Animal {
     private:
+        std::string _type;
         Brain*  myBrain;
     protected:
     public:
@@ -13,6 +14,7 @@ class Cat : public Animal {
         Cat(const Cat & cp);
         ~Cat();
         Cat &operator=(const Cat & cp);
+        std::string getType() const;
         void    makeSound() const ;
 };
 

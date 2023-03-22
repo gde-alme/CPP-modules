@@ -16,6 +16,15 @@ int main() {
         else
             AnimalArray[i] = new Cat();
     }
+
+    /* test for deep copies */
+    for (int copy = 0; copy < 100; copy++) {
+        std::cout << "My type is: " << std::flush;
+        AnimalArray[copy]->getType();
+        std::cout << "And I make: " << std::flush;
+        AnimalArray[copy]->makeSound();
+    }
+
     for (int j = 0; j < 100; j++) {
         delete AnimalArray[j];
     }
