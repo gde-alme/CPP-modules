@@ -13,7 +13,8 @@ class Animal {
     public:
         Animal();
         Animal(const Animal & cp);
-        ~Animal();
+        /* virtual destructor so deleting each one is possible */
+        virtual ~Animal();
         Animal &operator=(const Animal & cp);
         virtual std::string getType() const;
         virtual void    makeSound() const;
