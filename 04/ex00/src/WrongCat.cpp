@@ -6,11 +6,11 @@
 /*   By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 14:21:33 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/03/23 14:21:34 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/03/24 19:13:12 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "WrongCat.hpp"
+#include "../inc/WrongCat.hpp"
 
 WrongCat::WrongCat() {
     if (VERBOSE)

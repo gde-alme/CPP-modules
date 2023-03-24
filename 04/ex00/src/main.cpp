@@ -6,13 +6,13 @@
 /*   By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 14:21:22 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/03/23 14:21:23 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/03/24 19:26:30 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
-#include "Cat.hpp"
-#include "WrongCat.hpp"
+#include "../inc/Dog.hpp"
+#include "../inc/Cat.hpp"
+#include "../inc/WrongCat.hpp"
 
 int main() {
     Animal  t;

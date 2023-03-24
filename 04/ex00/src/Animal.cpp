@@ -6,11 +6,11 @@
 /*   By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 14:21:03 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/03/23 14:21:04 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/03/24 19:11:21 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "../inc/Animal.hpp"
 
 Animal::Animal() {
     if (VERBOSE)

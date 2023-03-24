@@ -6,27 +6,22 @@
 #    By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/09 01:03:14 by gde-alme          #+#    #+#              #
-#    Updated: 2023/03/23 17:05:43 by gde-alme         ###   ########.fr        #
+#    Updated: 2023/03/24 19:00:46 by gde-alme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ================================================= #
-NAME	=	polymorphism
+NAME	=	ex00_polymorphism
 # ================================================= #
 
 # ================================================= #
-SRCS_DIR	=	./
+SRCS_DIR	=	./src/
 SRCS		=	Animal.cpp
-SRCS 		+=	WrongAnimal.cpp
-SRCS 		+=	WrongCat.cpp
-SRCS 		+=	Dog.cpp
 SRCS 		+=	Cat.cpp
+SRCS 		+=	Dog.cpp
+SRCS 		+=	WrongCat.cpp
+SRCS 		+=	WrongAnimal.cpp
 SRCS		+=	main.cpp
-# ================================================= #
-
-# ================================================= #
-INC			=	Animal.hpp WrongAnimal.hpp
-INC			+=	WrongCat.hpp Dog.hpp Cat.hpp
 # ================================================= #
 
 # ================================================= #
@@ -36,35 +31,34 @@ OBJS		=	$(addprefix $(OBJS_DIR), $(OBJ))
 # ================================================= #
 
 # ================================================= #
-CXX			=	@g++
-CPPFLAGS	=	-Wall -Wextra -Werror -std=c++98
-RM			=	@rm -rf
+CXX			=	c++
+FLAGS		=	-Wall -Wextra -Werror -std=c++98
+RM			=	rm -rf
 # ================================================= #
 
 # ================================================= #
-$(OBJS_DIR)%.o :	$(SRCS_DIR)%.cpp
-	@mkdir -p $(OBJS_DIR)
-	@echo "\033[0;32mCompiling $<\033[0m"
-	$(CXX) $(CPPFLAGS) -c $< -o $@
-
-$(NAME): $(OBJS)
-	$(CXX) $(INC) $(CPPFLAGS) -o $(NAME) $(OBJS)
 
 all: $(NAME)
 
+$(OBJS_DIR)%.o :	$(SRCS_DIR)%.cpp
+	@mkdir -p obj/
+	$(CXX) $(FLAGS) -c $< -o $@
+
+$(NAME): $(OBJS)
+	$(CXX) $(FLAGS) -o $(NAME) $(OBJS)
+
 clean:
-	@echo "\033[0;32mCleaning: $(OBJS_DIR)\033[0m"
 	$(RM) $(OBJS_DIR)
 	
 fclean: clean
-	@echo "\033[0;32mCleaning: $(NAME)\033[0m"
 	$(RM) $(NAME)
 
 re: fclean all
 
 test: fclean
-	@g++ -D VERBOSE=false *.hpp *.cpp -o polymorphism
-	@./polymorphism
+	c++ -D VERBOSE=false inc/*.hpp src/*.cpp -o $(NAME)
+	@./$(NAME)
+
 # ================================================= #
 
 .PHONY: all clean fclean re

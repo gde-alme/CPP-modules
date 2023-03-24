@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/23 14:21:09 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/03/23 14:21:10 by gde-alme         ###   ########.fr       */
+/*   Created: 2023/03/23 14:21:16 by gde-alme          #+#    #+#             */
+/*   Updated: 2023/03/24 19:11:40 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "../inc/Dog.hpp"
 
-Cat::Cat() {
+Dog::Dog() {
     if (VERBOSE)
-        std::cout << "[CAT] default constructor called" << std::endl;
-    this->_type = "Cat";
+    std::cout << "[Dog] default constructor called" << std::endl;
+    this->_type = "Dog";
 }
 
-Cat::Cat(const Cat & cp) : Animal(cp){
+Dog::Dog(const Dog & cp) : Animal(cp) {
     if (VERBOSE)
-        std::cout << "[CAT] default copy constructor called" << std::endl;
+    std::cout << "[Dog] default copy constructor called" << std::endl;
 }
 
-Cat::~Cat() {
+Dog::~Dog() {
     if (VERBOSE)
-        std::cout << "[CAT] default destructor called" << std::endl;
+    std::cout << "[Dog] default destructor called" << std::endl;
 }
 
-Cat     &Cat::operator=(const Cat & cp) {
+Dog &Dog::operator=(const Dog & cp) {
     if (VERBOSE)
-        std::cout << "[CAT] copy overload operator called" << std::endl;
+    std::cout << "[Dog] default copy operator overload called" << std::endl;
     this->_type = cp._type;
     return (*this);
 }
 
-void    Cat::makeSound() const {
-    std::cout << "Cat custom sound" << std::endl;
+void    Dog::makeSound() const {
+    std::cout << "Dog custom sound" << std::endl;
 }
