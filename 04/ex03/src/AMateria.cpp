@@ -1,4 +1,4 @@
-#include "../inc/macros.h"
+#include "../inc/macros.hpp"
 #include "../inc/AMateria.hpp"
 
 AMateria::AMateria() {

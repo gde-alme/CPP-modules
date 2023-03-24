@@ -1,5 +1,5 @@
 #include "../inc/ICharacter.hpp"
-#include "../inc/macros.h"
+#include "../inc/macros.hpp"
 
 ICharacter::~ICharacter() {
     if (VERBOSE)
