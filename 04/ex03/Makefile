@@ -6,7 +6,7 @@
 #    By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/09 01:03:14 by gde-alme          #+#    #+#              #
-#    Updated: 2023/03/22 18:35:56 by gde-alme         ###   ########.fr        #
+#    Updated: 2023/03/24 08:37:51 by gde-alme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,11 +17,18 @@ NAME	=	ex03_interface_recap
 # ================================================= #
 SRCS_DIR	=	./src/
 SRCS		=	AMateria.cpp
+SRCS 		+=	ICharacter.cpp
+SRCS 		+=	Ice.cpp
+SRCS 		+=	Cure.cpp
 SRCS		+=	main.cpp
 # ================================================= #
 
 # ================================================= #
 INC 		+=	inc/AMateria.hpp
+INC 		+=	inc/Cure.hpp
+INC 		+=	inc/Ice.hpp
+INC 		+=	inc/ICharacter.hpp
+INC 		+=	inc/macros.h
 # ================================================= #
 
 # ================================================= #

@@ -1,8 +1,12 @@
 #ifndef __AMATERIA_HPP__
-#define __AMATERIA_HPP
+#define __AMATERIA_HPP__
 
 # include <string>
 # include <iostream>
+
+# include "ICharacter.hpp"
+
+class ICharacter;
 
 class AMateria {
 	private:
@@ -15,7 +19,7 @@ class AMateria {
 		~AMateria();
 		AMateria &operator=(const AMateria & cp);
 		std::string const & getType() const;
-		//virtual AMateria * clone() const = 0;
+		virtual AMateria * clone() const = 0;
 		virtual void use(ICharacter& target) = 0;
 		
 };
