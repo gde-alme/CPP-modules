@@ -6,7 +6,7 @@
 #    By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/09 01:03:14 by gde-alme          #+#    #+#              #
-#    Updated: 2023/03/26 17:29:39 by gde-alme         ###   ########.fr        #
+#    Updated: 2023/03/26 17:52:17 by gde-alme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,9 @@ NAME	=	ex03_interface
 SRCS_DIR	=	./src/
 SRCS		=	AMateria.cpp
 SRCS 		+=	Character.cpp
-#SRCS 		+=	ICharacter.cpp
 SRCS 		+=	Ice.cpp
 SRCS 		+=	Cure.cpp
+SRCS 		+=	MateriaSource.cpp
 SRCS		+=	main.cpp
 # ============================================================================ #
 

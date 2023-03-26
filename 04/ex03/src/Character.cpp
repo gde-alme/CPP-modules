@@ -68,5 +68,6 @@ void	Character::unequip(int idx) {
 void	Character::use(int idx, ICharacter &target) {
 	if (this->_inventory[idx] != NULL) {
 		this->_inventory[idx]->use(target);
+		std::cout << this->getName() << std::endl;
 	}
 }
