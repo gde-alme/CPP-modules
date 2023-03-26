@@ -27,7 +27,7 @@ AMateria::~AMateria() {
 AMateria &AMateria::operator=(const AMateria & cp) {
 	if (VERBOSE)
 		std::cout << "[AMateria] interface copy overload operator called" << std::endl;
-	this->_type = cp._type;
+	this->_type = cp.getType();
 	return (*this);
 }
 

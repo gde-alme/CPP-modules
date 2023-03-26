@@ -24,3 +24,16 @@ Ice & Ice::operator=(const Ice & cp) {
 	this->_type = cp._type;
 	return (*this);
 }
+
+std::string const & Ice::getType() const {
+	return (this->_type);
+}
+
+Ice	*Ice::clone() const {
+	Ice	*cp = new Ice;
+	return (cp);
+}
+
+void	Ice::use(ICharacter &target) {
+	std::cout << this->getType() << " shoots an ice bolt at " << target.getName() << std::endl;
+}

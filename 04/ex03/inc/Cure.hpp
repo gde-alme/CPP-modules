@@ -9,9 +9,12 @@ class Cure : public AMateria {
     protected:
     public:
         Cure();
-        ~Cure();
         Cure(const Cure & cp);
         Cure &operator=(const Cure & cp);
+        ~Cure();
+        std::string const & getType() const;
+        Cure    *clone() const;
+        void    use(ICharacter &target);
 };
 
 #endif

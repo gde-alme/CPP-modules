@@ -12,6 +12,9 @@ class Ice : public AMateria {
 		Ice(const Ice & cp);
 		~Ice();
 		Ice & operator=(const Ice & cp);
+		std::string const & getType() const;
+		Ice *clone() const;
+		void	use(ICharacter &target);
 };
 
 #endif
