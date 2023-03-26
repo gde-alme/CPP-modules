@@ -6,7 +6,7 @@
 /*   By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 14:21:06 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/03/23 14:21:07 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/03/26 17:06:43 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Animal {
     public:
         Animal();
         Animal(const Animal & cp);
-        ~Animal();
+        virtual ~Animal();
         Animal &operator=(const Animal & cp);
         virtual std::string getType() const;
         virtual void    makeSound() const;

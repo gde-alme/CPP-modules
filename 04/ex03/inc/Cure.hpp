@@ -2,6 +2,7 @@
 #define __CURE_HPP__
 
 # include "AMateria.hpp"
+# include "ICharacter.hpp"
 
 class Cure : public AMateria {
     private:

@@ -6,7 +6,7 @@
 #    By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/09 01:03:14 by gde-alme          #+#    #+#              #
-#    Updated: 2023/03/24 19:00:46 by gde-alme         ###   ########.fr        #
+#    Updated: 2023/03/26 17:03:43 by gde-alme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ OBJS		=	$(addprefix $(OBJS_DIR), $(OBJ))
 
 # ================================================= #
 CXX			=	c++
-FLAGS		=	-Wall -Wextra -Werror -std=c++98
+FLAGS		=	-Wall -Wextra -Werror -std=c++98 -fsanitize=address
 RM			=	rm -rf
 # ================================================= #
 

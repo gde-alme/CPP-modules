@@ -12,6 +12,7 @@ class Character : public ICharacter {
     protected:
     public:
 		Character();
+		Character(const std::string name);
 		~Character();
 		Character(const Character &ref);
 		Character	&operator=(const Character &ref);

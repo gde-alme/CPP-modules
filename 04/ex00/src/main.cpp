@@ -6,7 +6,7 @@
 /*   By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 14:21:22 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/03/24 19:26:30 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/03/26 17:06:28 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,8 @@ int main() {
     std::cout << "i_2->" << std::flush;
 
     i_2->makeSound(); //will output the WrongAnimal sound!
+    delete meta;
+    delete j;
+    delete i;
+    delete i_2;
 }
