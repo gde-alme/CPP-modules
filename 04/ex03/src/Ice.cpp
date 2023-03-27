@@ -1,13 +1,12 @@
 #include "../inc/Ice.hpp"
 #include "../inc/macros.hpp"
 
-Ice::Ice() {
+Ice::Ice() : AMateria("ice") {
 	if (VERBOSE)
 		std::cout << "[Ice] default constructor called" << std::endl;
-	this->_type = "ice";
 }
 
-Ice::Ice(const Ice & cp) : AMateria(cp) {
+Ice::Ice(const Ice & cp) : AMateria("ice") {
 	if (VERBOSE)
 		std::cout << "[Ice] default copy constructor called" << std::endl;
 	*this = cp;
@@ -30,10 +29,10 @@ std::string const & Ice::getType() const {
 }
 
 Ice	*Ice::clone() const {
-	Ice	*cp = new Ice;
+	Ice	*cp = new Ice(*this);
 	return (cp);
 }
 
 void	Ice::use(ICharacter &target) {
-	std::cout << this->getType() << " shoots an ice bolt at " << target.getName() << std::endl;
+	std::cout << "shoots an ice bolt at " << target.getName() << std::endl;
 }

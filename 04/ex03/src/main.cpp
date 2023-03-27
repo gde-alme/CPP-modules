@@ -6,6 +6,9 @@
 #include "../inc/MateriaSource.hpp"
 #include "../inc/Character.hpp"
 
+
+#include <cstdlib>
+
 int main() {
 	IMateriaSource* src = new MateriaSource();
 

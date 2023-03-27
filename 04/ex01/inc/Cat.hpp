@@ -6,7 +6,7 @@
 /*   By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 14:24:55 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/03/23 14:24:56 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/03/27 12:43:02 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,15 @@
 
 class Cat : public Animal {
     private:
-        Brain*  myBrain;
+        Brain*  _myBrain;
     protected:
     public:
         Cat();
         Cat(const Cat & cp);
         ~Cat();
         Cat &operator=(const Cat & cp);
-        void    makeSound() const ;
+        void    makeSound() const;
+        Brain   *getBrain() const;
 };
 
 #endif

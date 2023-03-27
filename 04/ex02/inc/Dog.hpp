@@ -7,7 +7,7 @@
 class Dog : public Animal {
     private:
 		std::string	_type;
-        Brain*  myBrain;
+        Brain*  _myBrain;
     public:
         Dog();
         Dog(const Dog & cp);

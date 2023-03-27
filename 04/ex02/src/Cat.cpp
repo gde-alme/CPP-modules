@@ -3,7 +3,7 @@
 Cat::Cat() {
     if (VERBOSE)
         std::cout << "[Cat] default constructor called" << std::endl;
-    this->myBrain = new Brain();
+    this->_myBrain = new Brain();
     this->_type = "Cat";
 }
 
@@ -16,14 +16,14 @@ Cat::Cat(const Cat & cp) : Animal(cp){
 Cat::~Cat() {
     if (VERBOSE)
         std::cout << "[Cat] default destructor called" << std::endl;
-    delete this->myBrain;
+    delete this->_myBrain;
 }
 
 Cat     &Cat::operator=(const Cat & cp) {
     if (VERBOSE)
         std::cout << "[Cat] copy overload operator called" << std::endl;
     this->_type = "Cat";
-    this->myBrain = cp.myBrain;
+    this->_myBrain = cp._myBrain;
     return (*this);
 }
 

@@ -1,13 +1,12 @@
 #include "../inc/Cure.hpp"
 #include "../inc/macros.hpp"
 
-Cure::Cure() {
+Cure::Cure() : AMateria("cure") {
     if (VERBOSE)
         std::cout << "[Cure] default constructor called" << std::endl;
-    this->_type = "cure";
 }
 
-Cure::Cure(const Cure & cp) : AMateria(cp) {
+Cure::Cure(const Cure & cp) : AMateria("cure") {
     if (VERBOSE)
         std::cout << "[Cure] default copy constructor called" << std::endl;
     *this = cp;
@@ -35,5 +34,5 @@ Cure    *Cure::clone() const {
 }
 
 void    Cure::use(ICharacter &target) {
-    std::cout << this->getType() << " heals " << target.getName() << " wounds" << std::endl;
+    std::cout << "heals " << target.getName() << "'s wounds" << std::endl;
 }

@@ -3,7 +3,7 @@
 Dog::Dog() {
     if (VERBOSE)
     std::cout << "[Dog] default constructor called" << std::endl;
-    this->myBrain = new Brain();
+    this->_myBrain = new Brain();
     this->_type = "Dog";
 }
 
@@ -16,13 +16,13 @@ Dog::Dog(const Dog & cp) : Animal(cp) {
 Dog::~Dog() {
     if (VERBOSE)
     std::cout << "[Dog] default destructor called" << std::endl;
-    delete this->myBrain;
+    delete this->_myBrain;
 }
 
 Dog &Dog::operator=(const Dog & cp) {
     if (VERBOSE)
     std::cout << "[Dog] default copy operator overload called" << std::endl;
-    this->myBrain = cp.myBrain;
+    this->_myBrain = cp._myBrain;
     this->_type = cp._type;
     return (*this);
 }
