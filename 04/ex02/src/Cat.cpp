@@ -22,15 +22,15 @@ Cat::~Cat() {
 Cat     &Cat::operator=(const Cat & cp) {
     if (VERBOSE)
         std::cout << "[Cat] copy overload operator called" << std::endl;
-    this->_type = "Cat";
-    this->_myBrain = cp._myBrain;
+    this->_type = cp.getType();
+    this->_myBrain = new Brain(*cp.getBrain());
     return (*this);
-}
-
-std::string Cat::getType() const {
-    return (this->_type);
 }
 
 void    Cat::makeSound() const {
     std::cout << "Cat custom sound" << std::endl;
+}
+
+Brain   *Cat::getBrain() const {
+    return this->_myBrain;
 }

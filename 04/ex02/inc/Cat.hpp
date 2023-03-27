@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/23 14:24:55 by gde-alme          #+#    #+#             */
+/*   Updated: 2023/03/27 13:01:14 by gde-alme         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef __CAT_HPP__
 #define __CAT_HPP__
 
@@ -6,16 +18,15 @@
 
 class Cat : public Animal {
     private:
-        std::string _type;
         Brain*  _myBrain;
     protected:
     public:
         Cat();
         Cat(const Cat & cp);
-        ~Cat();
+        virtual ~Cat();
         Cat &operator=(const Cat & cp);
-        std::string getType() const;
-        void    makeSound() const ;
+        void    makeSound() const;
+        Brain   *getBrain() const;
 };
 
 #endif

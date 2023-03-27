@@ -6,7 +6,7 @@
 /*   By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 14:24:58 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/03/27 12:32:41 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/03/27 13:01:40 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Dog : public Animal {
     public:
         Dog();
         Dog(const Dog & cp);
-        ~Dog();
+        virtual ~Dog();
         Dog &operator=(const Dog & cp);
         void    makeSound() const;
         Brain   *getBrain() const;

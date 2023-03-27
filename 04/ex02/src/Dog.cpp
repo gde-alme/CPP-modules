@@ -22,15 +22,15 @@ Dog::~Dog() {
 Dog &Dog::operator=(const Dog & cp) {
     if (VERBOSE)
     std::cout << "[Dog] default copy operator overload called" << std::endl;
-    this->_myBrain = cp._myBrain;
+    this->_myBrain = new Brain(*cp.getBrain());
     this->_type = cp._type;
     return (*this);
 }
 
-std::string Dog::getType() const {
-    return(this->_type);
-}
-
 void    Dog::makeSound() const {
     std::cout << "Dog custom sound" << std::endl;
+}
+
+Brain   *Dog::getBrain() const {
+    return (this->_myBrain);
 }

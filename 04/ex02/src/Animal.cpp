@@ -2,13 +2,12 @@
 
 Animal::Animal() {
     if (VERBOSE)
-        std::cout << "[Animal] was born by default constructor" << std::endl; 
-    this->_type = "Frank";
+        std::cout << "[Animal] default constructor called" << std::endl; 
 }
 
 Animal::Animal(const Animal & cp) {
     if (VERBOSE)
-        std::cout << "[Animal] was born by default copy constructor" << std::endl;
+        std::cout << "[Animal] default copy constructor called" << std::endl;
     *this = cp;
 }
 
@@ -19,7 +18,7 @@ Animal  & Animal::operator=(const Animal & cp) {
 
 Animal::~Animal() {
     if (VERBOSE)
-        std::cout << "[Animal] was killed by default destructor" << std::endl; 
+        std::cout << "[Animal] default destructor called" << std::endl; 
 }
 
 std::string Animal::getType() const {
