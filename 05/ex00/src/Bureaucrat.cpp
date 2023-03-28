@@ -27,7 +27,7 @@ Bureaucrat::~Bureaucrat() {
 Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &ref) {
 	if (VERBOSE)
 		std::cout << "[Bureaucrat] copy overload operator called" << std::endl;
-	this->_grade = ref._grade;
+	this->_grade = ref.getGrade();
 	return (*this);
 }
 
