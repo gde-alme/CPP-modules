@@ -1,6 +1,18 @@
 #include "../inc/Bureaucrat.hpp"
 
-int main() {
+//exec with argv "talk" to test << operator
+int main(int argc, char **argv) {
 	//Bureaucrat Ford; //throw exception error
-	Bureaucrat Ford("Ford", 132);
+	Bureaucrat Ford("Ford", 1);
+
+	Ford.incrementGrade();
+
+	std::cout << Ford << std::endl;
+
+	for (int icr = 0; icr < 150; icr++) {
+		if (argc > 1)
+			if (std::string(argv[1]) == "talk")
+				std::cout << Ford << std::endl;
+		Ford.decrementGrade();
+	}
 }

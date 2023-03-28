@@ -31,11 +31,40 @@ Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &ref) {
 	return (*this);
 }
 
+std::ostream	&operator<<(std::ostream &fd, const Bureaucrat &me) {
+	fd << me.getName() << ", bureaucrat grade " << me.getGrade();
+	return (fd);
+}
+
 /* utils */
 std::string Bureaucrat::getName() const {
 	return (this->_name);
 }
 
-int	Bureaucrat::getGrade() const {
+int		Bureaucrat::getGrade() const {
 	return (this->_grade);
+}
+
+void	Bureaucrat::incrementGrade() {
+	try {
+		if (this->_grade == 1)
+			throw toHigh;
+		else
+			this->_grade--;
+	}
+	catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+}
+
+void	Bureaucrat::decrementGrade() {
+	try {
+		if (this->_grade == 150)
+			throw toLow;
+		else
+			this->_grade++;
+	}
+	catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
 }

@@ -3,6 +3,7 @@
 
 # include <string>
 # include <iostream>
+# include <exception>
 
 class Bureaucrat {
 	private:
@@ -20,6 +21,21 @@ class Bureaucrat {
 		/* utils */
 		std::string	getName() const;
 		int			getGrade() const;
+		void		incrementGrade();
+		void		decrementGrade();
+		/* exceptions */
+		class	toHigh : public std::exception {
+			virtual const char *what() const throw() {
+					return ("Max grade is 1");
+			}
+		} toHigh;
+		class	toLow : public std::exception {
+			virtual const char *what() const throw() {
+					return ("Min grade is 150");
+			}
+		} toLow;
 };
+
+std::ostream	&operator<<(std::ostream &fd, const Bureaucrat &me);
 
 #endif
