@@ -34,6 +34,14 @@ ShrubbertCreationForm &ShrubbertCreationForm::operator=(const ShrubbertCreationF
 	return (*this);
 }
 
+std::ostream	&operator<<(std::ostream &fd, const ShrubbertCreationForm &me) {
+	fd << "Form name -> " << me.getName() << std::endl << "Grade to sign -> " << me.getGradeSign() << std::endl;
+	fd << "Grade to exec -> " << me.getGradeExec() << std::endl << "Is signed -> ";
+	if (me.getSigned()) fd << "yes"; else fd << "nop";
+	return (fd);
+}
+
+/* actions */
 void	ShrubbertCreationForm::myFunc() {
 	std::string fd_name(this->_target + "_shrubbery");
 	std::ofstream	fd(&fd_name[0]);

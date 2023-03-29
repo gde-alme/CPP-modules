@@ -2,8 +2,10 @@
 #define __ROBOTOMYREQUESTFORM_HPP__
 
 # include "AForm.hpp"
+# include <cstdlib>
+# include <ctime>
 
-class RobotomyRequestForm : AForm {
+class RobotomyRequestForm : public AForm {
 	private:
 		std::string _target;
 	protected:
@@ -13,6 +15,9 @@ class RobotomyRequestForm : AForm {
 		RobotomyRequestForm(const RobotomyRequestForm &ref);
 		~RobotomyRequestForm();
 		RobotomyRequestForm	&operator=(const RobotomyRequestForm &ref);
+		void	myFunc();
 };
+
+std::ostream	&operator<<(std::ostream &fd, const RobotomyRequestForm &me);
 
 #endif

@@ -3,7 +3,7 @@
 
 # include "AForm.hpp"
 
-class PresidentialPardonForm : AForm {
+class PresidentialPardonForm : public AForm {
 	private:
 		std::string _target;
 	protected:
@@ -13,6 +13,9 @@ class PresidentialPardonForm : AForm {
 		PresidentialPardonForm(const PresidentialPardonForm &ref);
 		~PresidentialPardonForm();
 		PresidentialPardonForm	&operator=(const PresidentialPardonForm &ref);
+		void	myFunc();
 };
+
+std::ostream	&operator<<(std::ostream &fd, const PresidentialPardonForm &me);
 
 #endif

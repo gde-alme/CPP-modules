@@ -33,3 +33,22 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &r
 	this->_target = ref._target;
 	return (*this);
 }
+
+std::ostream	&operator<<(std::ostream &fd, const RobotomyRequestForm &me) {
+	fd << "Form name -> " << me.getName() << std::endl << "Grade to sign -> " << me.getGradeSign() << std::endl;
+	fd << "Grade to exec -> " << me.getGradeExec() << std::endl << "Is signed -> ";
+	if (me.getSigned()) fd << "yes"; else fd << "nop";
+	return (fd);
+}
+
+void	RobotomyRequestForm::myFunc() {
+	std::cout << "uk drill" << std::endl;
+	std::cout << "fr drill" << std::endl;
+	std::time_t t = std::time(0);
+	std::tm	*now = std::localtime(&t);
+	bool random = (rand() % 100 * (now->tm_sec + 1) % 2) != 0;
+	if (random == true)
+		std::cout << this->_target << " has been rebotomized" << std::endl;
+	else
+		std::cout << this->_target << " robotomy attempt failed" << std::endl;
+}

@@ -18,4 +18,6 @@ class ShrubbertCreationForm : public AForm {
 		void	myFunc();
 };
 
+std::ostream &operator<<(std::ostream &fd, const ShrubbertCreationForm &me);
+
 #endif

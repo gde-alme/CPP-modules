@@ -33,3 +33,13 @@ PresidentialPardonForm	&PresidentialPardonForm::operator=(const PresidentialPard
 	this->_target = ref._target;
 	return (*this);
 }
+
+std::ostream	&operator<<(std::ostream &fd, const PresidentialPardonForm &me) {
+	fd << "Form name -> " << me.getName() << std::endl << "Grade to sign -> " << me.getGradeSign() << std::endl;
+	fd << "Grade to exec -> " << me.getGradeExec() << std::endl << "Is signed -> ";
+	if (me.getSigned()) fd << "yes"; else fd << "nop";
+	return (fd);
+}
+void	PresidentialPardonForm::myFunc() {
+	std::cout << this->_target << " has been pardoned by the doubble headed Zaphod Beeblebrox" << std::endl;
+}
