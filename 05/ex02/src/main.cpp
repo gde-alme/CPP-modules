@@ -65,6 +65,8 @@ int main() {
 
 	PresidentialPardonForm	form3("LuckyDoubbleHeadedFvcker");
 
+	Bureaucrat bure_c("eque", 1);
+
 	std::cout << form3 << std::endl;
 
 	try { form3.beSigned(bure); }
@@ -75,6 +77,15 @@ int main() {
 	std::cout << std::endl << "wont exec" << std::endl << std::endl;
 
 	form3.execute(bure);
+
+	std::cout << std::endl << "#======================================================#" << std::endl << std::endl;;
+
+	try { form3.beSigned(bure_c); }
+	catch (AForm::GradeTooLowException &e) { 
+		std::cout << "Can't sign this form bc " << e.what() << std::endl;
+	}
+	
+	bure_c.executeForm(form3);
 
 	return (0);
 }
