@@ -11,13 +11,13 @@ class ShrubbertCreationForm : public AForm {
 	protected:
 		ShrubbertCreationForm();
 	public:
-		ShrubbertCreationForm(std::string target);
-		ShrubbertCreationForm(const ShrubbertCreationForm &ref);
+		ShrubbertCreationForm(std::string);
+		ShrubbertCreationForm(const ShrubbertCreationForm &);
 		~ShrubbertCreationForm();
-		ShrubbertCreationForm	&operator=(const ShrubbertCreationForm &ref);
-		void	myFunc();
+		ShrubbertCreationForm	&operator=(const ShrubbertCreationForm &);
+		void	execute(Bureaucrat const &executor);
 };
 
-std::ostream &operator<<(std::ostream &fd, const ShrubbertCreationForm &me);
+std::ostream &operator<<(std::ostream &, const ShrubbertCreationForm &);
 
 #endif

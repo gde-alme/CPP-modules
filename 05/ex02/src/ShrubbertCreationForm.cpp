@@ -42,7 +42,10 @@ std::ostream	&operator<<(std::ostream &fd, const ShrubbertCreationForm &me) {
 }
 
 /* actions */
-void	ShrubbertCreationForm::myFunc() {
+void	ShrubbertCreationForm::execute(Bureaucrat const &executor) {
+	try { AForm::execute(executor); }
+	catch (AForm::FormNotSignedException &e) { std::cout << "Can't execute bc " << e.what() << std::endl; return ;}
+	catch (AForm::GradeTooLowException &e) { std::cout << "Can't execute bc " << e.what() << std::endl; return ;}
 	std::string fd_name(this->_target + "_shrubbery");
 	std::ofstream	fd(&fd_name[0]);
 	fd << "           \\/ |    |/" << std::endl;

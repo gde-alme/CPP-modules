@@ -41,7 +41,10 @@ std::ostream	&operator<<(std::ostream &fd, const RobotomyRequestForm &me) {
 	return (fd);
 }
 
-void	RobotomyRequestForm::myFunc() {
+void	RobotomyRequestForm::execute(Bureaucrat const &executor) {
+	try { AForm::execute(executor); }
+	catch (AForm::FormNotSignedException &e) { std::cout << "Can't execute bc " << e.what() << std::endl; return ;}
+	catch (AForm::GradeTooLowException &e) { std::cout << "Can't execute bc " << e.what() << std::endl; return ;}
 	std::cout << "uk drill" << std::endl;
 	std::cout << "fr drill" << std::endl;
 	std::time_t t = std::time(0);

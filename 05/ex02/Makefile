@@ -6,7 +6,7 @@
 #    By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/09 01:03:14 by gde-alme          #+#    #+#              #
-#    Updated: 2023/03/29 11:00:26 by gde-alme         ###   ########.fr        #
+#    Updated: 2023/03/29 15:02:38 by gde-alme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,7 @@ fclean: clean
 re: fclean all
 
 test: fclean
-	c++ -D VERBOSE=false inc/*.hpp src/*.cpp -o $(NAME)
+	c++ -D VERBOSE=false src/*.cpp -o $(NAME)
 	@./$(NAME)
 
 # ================================================= #

@@ -9,13 +9,13 @@ class PresidentialPardonForm : public AForm {
 	protected:
 		PresidentialPardonForm();
 	public:
-		PresidentialPardonForm(std::string target);
-		PresidentialPardonForm(const PresidentialPardonForm &ref);
+		PresidentialPardonForm(std::string);
+		PresidentialPardonForm(const PresidentialPardonForm &);
 		~PresidentialPardonForm();
-		PresidentialPardonForm	&operator=(const PresidentialPardonForm &ref);
-		void	myFunc();
+		PresidentialPardonForm	&operator=(const PresidentialPardonForm &);
+		void	execute(Bureaucrat const &);
 };
 
-std::ostream	&operator<<(std::ostream &fd, const PresidentialPardonForm &me);
+std::ostream	&operator<<(std::ostream &, const PresidentialPardonForm &);
 
 #endif

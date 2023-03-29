@@ -16,17 +16,17 @@ class Bureaucrat {
 	public:
 		/* constructors */
 		Bureaucrat(const std::string name, int grade);
-		Bureaucrat(const Bureaucrat &ref);
+		Bureaucrat(const Bureaucrat &);
 		/* destructors */
 		~Bureaucrat();
 		/* operators */
-		Bureaucrat &operator=(const Bureaucrat &ref);
+		Bureaucrat &operator=(const Bureaucrat &);
 		/* utils */
 		std::string	getName() const;
 		int			getGrade() const;
 		void		incrementGrade();
 		void		decrementGrade();
-		void 		signAForm(AForm &myAForm);
+		void 		signAForm(AForm &);
 		/* exceptions */
 		class	GradeTooHighException : public std::exception {
 			public:
@@ -42,6 +42,6 @@ class Bureaucrat {
 		} toLow;
 };
 
-std::ostream	&operator<<(std::ostream &fd, const Bureaucrat &me);
+std::ostream	&operator<<(std::ostream &, const Bureaucrat &);
 
 #endif

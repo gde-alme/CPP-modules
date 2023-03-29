@@ -40,6 +40,9 @@ std::ostream	&operator<<(std::ostream &fd, const PresidentialPardonForm &me) {
 	if (me.getSigned()) fd << "yes"; else fd << "nop";
 	return (fd);
 }
-void	PresidentialPardonForm::myFunc() {
+void	PresidentialPardonForm::execute(const Bureaucrat &executor) {
+	try { AForm::execute(executor); }
+	catch (AForm::FormNotSignedException &e) { std::cout << "Can't execute bc " << e.what() << std::endl; return ;}
+	catch (AForm::GradeTooLowException &e) { std::cout << "Can't execute bc " << e.what() << std::endl; return ;}
 	std::cout << this->_target << " has been pardoned by the doubble headed Zaphod Beeblebrox" << std::endl;
 }

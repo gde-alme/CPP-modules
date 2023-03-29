@@ -65,6 +65,7 @@ void		AForm::beSigned(const Bureaucrat &dude) {
 	if (dude.getGrade() > this->getGradeSign())
 		throw tooLow;
 	this->_signed = true;
+	std::cout << this->getName() << " just got signed by " << dude.getName() << std::endl;
 }
 
 void		AForm::execute(Bureaucrat const &executor) {

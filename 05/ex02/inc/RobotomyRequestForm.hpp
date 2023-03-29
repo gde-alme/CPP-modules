@@ -11,13 +11,13 @@ class RobotomyRequestForm : public AForm {
 	protected:
 		RobotomyRequestForm();
 	public:
-		RobotomyRequestForm(std::string target);
-		RobotomyRequestForm(const RobotomyRequestForm &ref);
+		RobotomyRequestForm(std::string);
+		RobotomyRequestForm(const RobotomyRequestForm &);
 		~RobotomyRequestForm();
-		RobotomyRequestForm	&operator=(const RobotomyRequestForm &ref);
-		void	myFunc();
+		RobotomyRequestForm	&operator=(const RobotomyRequestForm &);
+		void	execute(Bureaucrat const &executor);
 };
 
-std::ostream	&operator<<(std::ostream &fd, const RobotomyRequestForm &me);
+std::ostream	&operator<<(std::ostream &, const RobotomyRequestForm &);
 
 #endif
