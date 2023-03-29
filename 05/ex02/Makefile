@@ -6,21 +6,21 @@
 #    By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/09 01:03:14 by gde-alme          #+#    #+#              #
-#    Updated: 2023/03/26 17:52:17 by gde-alme         ###   ########.fr        #
+#    Updated: 2023/03/29 11:00:26 by gde-alme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ============================================================================ #
-NAME	=	ex03_interface
+NAME	=	ex02_AForms
 # ============================================================================ #
 
 # ============================================================================ #
 SRCS_DIR	=	./src/
-SRCS		=	AMateria.cpp
-SRCS 		+=	Character.cpp
-SRCS 		+=	Ice.cpp
-SRCS 		+=	Cure.cpp
-SRCS 		+=	MateriaSource.cpp
+SRCS 		+=	Bureaucrat.cpp
+SRCS 		+=	AForm.cpp
+SRCS 		+=	ShrubbertCreationForm.cpp
+SRCS 		+=	RobotomyRequestForm.cpp
+SRCS 		+=	PresidentialPardonForm.cpp
 SRCS		+=	main.cpp
 # ============================================================================ #
 
@@ -52,6 +52,7 @@ clean:
 	
 fclean: clean
 	$(RM) $(NAME)
+	$(RM) *_shrubbery
 
 re: fclean all
 
