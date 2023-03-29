@@ -1,6 +1,6 @@
 #include "../inc/Bureaucrat.hpp"
 #include "../inc/AForm.hpp"
-#include "../inc/ShrubbertCreationForm.hpp"
+#include "../inc/ShrubberyCreationForm.hpp"
 #include "../inc/RobotomyRequestForm.hpp"
 #include "../inc/PresidentialPardonForm.hpp"
 
@@ -8,11 +8,11 @@ int main() {
 	Bureaucrat				bure("manel", 42);
 	Bureaucrat				bure2("lenam", 148);
 
-	/* ShrubbertCreationForm */
+	/* ShrubberyCreationForm */
 	std::cout << std::endl << "#======================================================#" << std::endl << std::endl;;
-	std::cout << "ShrubbertCreationForm" << std::endl;
+	std::cout << "ShrubberyCreationForm" << std::endl;
 
-	ShrubbertCreationForm	form("hiWorld");
+	ShrubberyCreationForm	form("hiWorld");
 
 	std::cout << form << std::endl;
 

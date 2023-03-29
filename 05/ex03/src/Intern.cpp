@@ -22,6 +22,29 @@ Intern	&Intern::operator=(const Intern &ref) {
 	return (*this);
 }
 
-Form	*Intern::makeForm(std::string name, std::string target) {
+AForm	*newShrubberyForm(std::string target) {
+	return (new ShrubberyCreationForm(target));
+}
+
+AForm	*newRobotomyForm(std::string target) {
+	return (new ShrubberyCreationForm(target));
+}
+
+AForm	*newPresidentialForm(std::string target) {
+	return (new ShrubberyCreationForm(target));
+}
+
+AForm	*Intern::makeForm(std::string name, std::string target) {
 	//function pointers or switch since no if/else chain if allowed
+	std::string forms[3] = {"ShrubberyCreation", "RobotomyRequest", "PresidentialPardon"};
+	AForm	*(*funcsPtr[3])(std::string) = {&newShrubberyForm, &newRobotomyForm, &newPresidentialForm};
+
+	for (int i = 0; i < 3; i++) {
+		if (name == forms[i]) {
+			std::cout << "Intern creates " << forms[i] << std::endl;
+			return (funcsPtr[i](target));
+		}
+	}
+	std::cout << "Intern got lost with translation" << std::endl;
+	return (NULL);
 }

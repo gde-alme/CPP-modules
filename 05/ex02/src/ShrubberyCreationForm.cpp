@@ -1,40 +1,40 @@
-#include "../inc/ShrubbertCreationForm.hpp"
+#include "../inc/ShrubberyCreationForm.hpp"
 #include "../inc/macros.h"
 
 /* constructors */
-ShrubbertCreationForm::ShrubbertCreationForm() : AForm("ShrubbertCreation", 145, 137) {
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreation", 145, 137) {
 	if (VERBOSE)
-		std::cout << "[ShrubbertCreationForm] protected constructor called" << std::endl;
+		std::cout << "[ShrubberyCreationForm] protected constructor called" << std::endl;
 	this->_target = "";
 }
 
-ShrubbertCreationForm::ShrubbertCreationForm(std::string target) : AForm("ShrubbertCreation", 145, 137) {
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreation", 145, 137) {
 	if (VERBOSE)
-		std::cout << "[ShrubbertCreationForm] useful constructor called" << std::endl;
+		std::cout << "[ShrubberyCreationForm] useful constructor called" << std::endl;
 	this->_target = target;
 }
 
-ShrubbertCreationForm::ShrubbertCreationForm(const ShrubbertCreationForm &ref) : AForm(ref) {
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &ref) : AForm(ref) {
 	if (VERBOSE)
-		std::cout << "[ShrubbertCreationForm] copy constructor called" << std::endl;
+		std::cout << "[ShrubberyCreationForm] copy constructor called" << std::endl;
 	*this = ref;
 }
 
 /* destructors */
-ShrubbertCreationForm::~ShrubbertCreationForm() {
+ShrubberyCreationForm::~ShrubberyCreationForm() {
 	if (VERBOSE)
-		std::cout << "[ShrubbertCreationForm] default destructor called" << std::endl;
+		std::cout << "[ShrubberyCreationForm] default destructor called" << std::endl;
 }
 
 /* operators */
-ShrubbertCreationForm &ShrubbertCreationForm::operator=(const ShrubbertCreationForm &ref) {
+ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &ref) {
 	if (VERBOSE)
-		std::cout << "[ShrubbertCreationForm] copy operator called" << std::endl;
+		std::cout << "[ShrubberyCreationForm] copy operator called" << std::endl;
 	this->_target = ref._target;
 	return (*this);
 }
 
-std::ostream	&operator<<(std::ostream &fd, const ShrubbertCreationForm &me) {
+std::ostream	&operator<<(std::ostream &fd, const ShrubberyCreationForm &me) {
 	fd << "Form name -> " << me.getName() << std::endl << "Grade to sign -> " << me.getGradeSign() << std::endl;
 	fd << "Grade to exec -> " << me.getGradeExec() << std::endl << "Is signed -> ";
 	if (me.getSigned()) fd << "yes"; else fd << "nop";
@@ -42,7 +42,7 @@ std::ostream	&operator<<(std::ostream &fd, const ShrubbertCreationForm &me) {
 }
 
 /* actions */
-void	ShrubbertCreationForm::execute(Bureaucrat const &executor) const {
+void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
 	try { AForm::execute(executor); }
 	catch (AForm::FormNotSignedException &e) { std::cout << "Can't execute bc " << e.what() << std::endl; return ;}
 	catch (AForm::GradeTooLowException &e) { std::cout << "Can't execute bc " << e.what() << std::endl; return ;}

@@ -2,6 +2,15 @@
 #define __INTERN_HPP__
 
 # include <iostream>
+# include "AForm.hpp"
+# include "ShrubberyCreationForm.hpp"
+# include "RobotomyRequestForm.hpp"
+# include "PresidentialPardonForm.hpp"
+
+class AForm;
+class ShrubberyCreationForm;
+class RobotomyRequestForm;
+class PresidentialPardonForm;
 
 class Intern {
 	public:
