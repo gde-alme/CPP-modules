@@ -35,7 +35,7 @@ AForm	*newPresidentialForm(std::string target) {
 }
 
 AForm	*Intern::makeForm(std::string name, std::string target) {
-	//function pointers or switch since no if/else chain if allowed
+	//function pointers or switch since no if/else chain is allowed
 	std::string forms[3] = {"ShrubberyCreation", "RobotomyRequest", "PresidentialPardon"};
 	AForm	*(*funcsPtr[3])(std::string) = {&newShrubberyForm, &newRobotomyForm, &newPresidentialForm};
 
