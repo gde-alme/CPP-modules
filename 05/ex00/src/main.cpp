@@ -17,8 +17,8 @@ int main(int argc, char **argv) {
 			Ford.decrementGrade();
 		}
 	}
-	catch (Bureaucrat::GradeTooHighException &e) { std::cout << e.what() << std::endl; }
-	catch (Bureaucrat::GradeTooLowException &e) { std::cout << e.what() << std::endl; }
+	catch (Bureaucrat::GradeTooHighException &e) { std::cout << e.what() << std::endl; return (0); }
+	catch (Bureaucrat::GradeTooLowException &e) { std::cout << e.what() << std::endl; return (0); }
 
 	return (0);
 }
