@@ -6,22 +6,17 @@
 #    By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/09 01:03:14 by gde-alme          #+#    #+#              #
-#    Updated: 2023/03/29 18:23:49 by gde-alme         ###   ########.fr        #
+#    Updated: 2023/04/01 21:02:52 by gde-alme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ============================================================================ #
-NAME	=	ex03_slavery
+NAME	=	ex01_serializer
 # ============================================================================ #
 
 # ============================================================================ #
 SRCS_DIR	=	./src/
-SRCS 		+=	Bureaucrat.cpp
-SRCS 		+=	AForm.cpp
-SRCS 		+=	ShrubberyCreationForm.cpp
-SRCS 		+=	RobotomyRequestForm.cpp
-SRCS 		+=	PresidentialPardonForm.cpp
-SRCS		+=	Intern.cpp
+SRCS		+=	Serializer.cpp
 SRCS		+=	main.cpp
 # ============================================================================ #
 
