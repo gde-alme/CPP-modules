@@ -32,7 +32,11 @@ ScalarConverter	&ScalarConverter::operator=(const ScalarConverter &ref) {
 }
 
 std::ostream	&operator<<(std::ostream &fd, const ScalarConverter &ref) {
-	ref.getSliteral(); //-Werror
+	fd << ref.getCharConvert() << std::endl;
+	fd << ref.getIntConvert() << std::endl;
+	fd << ref.getFloatConvert() << std::endl;
+	fd << ref.getDoubleConvert() << std::endl;
+
 	return (fd);
 }
 
@@ -98,7 +102,7 @@ bool	ScalarConverter::isSpecial() const {
 	return (false);
 }
 
-void	ScalarConverter::isImpossible() {
+bool	ScalarConverter::isImpossible() {
 	char	*end;
 	long	tmp;
 	double	tmp2;
@@ -123,16 +127,39 @@ void	ScalarConverter::isImpossible() {
 			this->_doubleConvert = std::atof(this->_sliteral.c_str());
 			if (std::isinf(_doubleConvert)) {
 				throw OverflowExept;
-				break ;
+				return (true);
 			}
 			break ;
 	}
+	return (false);
 }
 
+/* getters */
 std::string ScalarConverter::getSliteral() const {
 	return (_sliteral);
 }
 
+int		ScalarConverter::getType() const {
+	return (this->_type);
+}
+
+char	ScalarConverter::getCharConvert() const {
+	return (this->_charConvert);
+}
+
+int		ScalarConverter::getIntConvert() const {
+	return (this->_intConvert);
+}
+
+float	ScalarConverter::getFloatConvert() const {
+	return (this->_floatConvert);
+}
+
+double	ScalarConverter::getDoubleConvert() const {
+	return (this->_doubleConvert);
+}
+
+/* setters */
 void	ScalarConverter::setType() {
 	if (this->isChar()) {
 		this->_type = CHAR_T; }
@@ -147,22 +174,34 @@ void	ScalarConverter::setType() {
 	else this->_type = NO_T;
 }
 
-int		ScalarConverter::getType() const {
-	return (this->_type);
-}
-
 /* actions */
 void	ScalarConverter::convert() {
 	this->setType();
-	try {
-		this->isImpossible();
-	} catch (std::exception &e) {
-		std::cout << "Exception: " << e.what() << std::endl;
+	if (this->isImpossible())
 		return ;
-	}
 	switch (this->getType()) {
 		case CHAR_T:
-			std::cout << this->getSliteral()<<std::endl;
-			break;
+			this->_charConvert = this->_sliteral[0];
+			this->_intConvert = (int)(this->_sliteral)[0];
+			this->_floatConvert = (float)(this->_sliteral[0]);
+			this->_doubleConvert = (double)(this->_sliteral[0]);
+			break ;
+		case INT_T:
+			this->_charConvert = static_cast<char>(this->_intConvert);
+			this->_floatConvert = static_cast<float>(this->_intConvert);
+			this->_doubleConvert = static_cast<double>(this->_intConvert);
+			break ;
+		case FLOAT_T:
+			this->_charConvert = static_cast<char>(this->_floatConvert);
+			this->_intConvert = static_cast<int>(this->_floatConvert);
+			this->_doubleConvert = static_cast<double>(this->_floatConvert);
+			break ;
+		case DOUBLE_T:
+			this->_charConvert = static_cast<char>(this->_doubleConvert);
+			this->_intConvert = static_cast<int>(this->_doubleConvert);
+			this->_floatConvert = static_cast<float>(this->_doubleConvert);
+			break ;
+		default:
+			break ;
 	}
 }

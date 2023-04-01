@@ -21,7 +21,7 @@ class ScalarConverter {
 	private:
 		std::string	_sliteral;
 		int			_type;
-		std::string	_stringConvert;
+		char		_charConvert;
 		int 		_intConvert;
 		float		_floatConvert;
 		double		_doubleConvert;
@@ -33,7 +33,7 @@ class ScalarConverter {
 		bool	isDouble() const;
 		bool	isSpecial() const;
 		void	setType();
-		void	isImpossible();
+		bool	isImpossible();
 	public:
 		ScalarConverter(std::string);
 		ScalarConverter(const ScalarConverter &);
@@ -42,6 +42,11 @@ class ScalarConverter {
 
 		std::string	getSliteral() const;
 		int			getType() const;
+		char		getCharConvert() const;
+		int			getIntConvert() const;
+		float		getFloatConvert() const;
+		double		getDoubleConvert() const;
+		
 		void		convert();
 
 		class OverflowException : public std::exception {

@@ -7,5 +7,11 @@ int main(int argc, char *argv[]) {
 		return (0);
 	}
 	ScalarConverter a(argv[1]);
-	a.convert();
+	try {
+		a.convert();
+	} catch (std::exception &e) { 
+		std::cout << "Can't convert bc " << e.what() << std::endl;
+		return (0);
+	}
+	std::cout << a << std::endl;
 }
