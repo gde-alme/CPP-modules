@@ -7,4 +7,5 @@ int main(int argc, char *argv[]) {
 		return (0);
 	}
 	ScalarConverter a(argv[1]);
+	a.convert();
 }

@@ -38,20 +38,82 @@ std::ostream	&operator<<(std::ostream &fd, const ScalarConverter &ref) {
 
 /* utils */
 bool	ScalarConverter::isChar() const {
-	if (this->_sliteral[0] >= 32 && this->_sliteral[0] <= 126)
+	if (this->getSliteral().length() == 1 &&\
+		std::isalpha(this->getSliteral()[0]) && std::isprint(this->getSliteral()[0]))
 		return (true);
 	return (false);
 }
 
 bool	ScalarConverter::isInt() const {
-	for (int i = 0; this->_sliteral[i]; i++) {
-		if (this->_sliteral[i] < 48 || this->_sliteral[i] > 57)
+	int j = 0;
+	if (this->getSliteral()[0] == '-')
+		j++;
+	for (int i = j; this->_sliteral[i]; i++) {
+		if (!std::isdigit(this->getSliteral()[i]) || this->getSliteral().length() > 11)
 			return (false);
-		else if (//atoi is bigger then MAX_INT || smaller then MIN_INT)
 	}
 	return (true);
 }
 
+bool	ScalarConverter::isFloat() const {
+	if (this->getSliteral().find('.') == std::string::npos || this->getSliteral()[this->getSliteral().length() - 1] != 'f'\
+		|| this->getSliteral().find('.') == 0)
+		return (false);
+	int j = 0;
+	int	float_bool = 0;
+	if (this->getSliteral()[0] == '-')
+		j++;
+	for (int i = j; this->_sliteral[i + 1]; i++) {
+		if (this->getSliteral()[i] == '.')
+			float_bool++;
+		if ((!std::isdigit(this->getSliteral()[i]) && this->getSliteral()[i] != '.' ) ||\
+			float_bool >  1)
+			return (false);
+	}
+	return (true);
+}
+
+bool	ScalarConverter::isDouble() const {
+	if (this->getSliteral().find('.') == std::string::npos || this->getSliteral().find('.') == 0)
+		return (false);
+	int j = 0;
+	int	float_bool = 0;
+	if (this->getSliteral()[0] == '-')
+		j++;
+	for (int i = j; this->_sliteral[i]; i++) {
+		if (this->getSliteral()[i] == '.')
+			float_bool++;
+		if ((!std::isdigit(this->getSliteral()[i]) && this->getSliteral()[i] != '.' ) ||\
+			float_bool >  1)
+			return (false);
+	}
+	return (true);
+}
+
+bool	ScalarConverter::isSpecial() const {
+	if (this->getSliteral() == "")
+		return (true);
+	return (false);
+}
+
 std::string ScalarConverter::getSliteral() const {
 	return (_sliteral);
+}
+
+void	ScalarConverter::setType() {
+	if (this->isChar()) {
+		this->_type = CHAR_T; }
+	else if (this->isInt()) {
+		this->_type = INT_T; }
+	else if (this->isFloat()) {
+		this->_type = FLOAT_T; }
+	else if (this->isDouble()) {
+		this->_type = DOUBLE_T; }
+	else if (this->isSpecial()) {
+		this->_type = SPECIAL_T; }
+}
+
+/* actions */
+void	ScalarConverter::convert() {
+	std::cout << this->isDouble() << std::endl;
 }
