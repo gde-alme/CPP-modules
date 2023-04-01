@@ -49,7 +49,7 @@ bool	ScalarConverter::isInt() const {
 	if (this->getSliteral()[0] == '-')
 		j++;
 	for (int i = j; this->_sliteral[i]; i++) {
-		if (!std::isdigit(this->getSliteral()[i]) || this->getSliteral().length() > 11)
+		if (!std::isdigit(this->getSliteral()[i]))
 			return (false);
 	}
 	return (true);
@@ -91,9 +91,42 @@ bool	ScalarConverter::isDouble() const {
 }
 
 bool	ScalarConverter::isSpecial() const {
-	if (this->getSliteral() == "")
+	if (this->_sliteral == "-inff" || this->_sliteral == "+inff" || this->_sliteral == "nanf")
+		return (true);
+	if (this->_sliteral == "-inf" || this->_sliteral == "+inf" || this->_sliteral == "nan")
 		return (true);
 	return (false);
+}
+
+void	ScalarConverter::isImpossible() {
+	char	*end;
+	long	tmp;
+	double	tmp2;
+	switch (this->getType()) {
+		case INT_T:
+			tmp = std::strtol(this->_sliteral.c_str(), &end, 10);
+			if (tmp > 2147483647 || tmp < -2147483648) {
+				throw OverflowExept;
+				break ;
+			}
+			this->_intConvert = static_cast<int>(tmp);
+			break;
+		case FLOAT_T:
+			tmp2 = std::atof(this->_sliteral.c_str());
+			if (tmp2 > FLT_MAX || tmp2 < FLT_MIN) {
+				throw OverflowExept;
+				break ;
+			}
+			this->_floatConvert = static_cast<float>(tmp2);
+			break;
+		case DOUBLE_T:
+			this->_doubleConvert = std::atof(this->_sliteral.c_str());
+			if (std::isinf(_doubleConvert)) {
+				throw OverflowExept;
+				break ;
+			}
+			break ;
+	}
 }
 
 std::string ScalarConverter::getSliteral() const {
@@ -111,9 +144,25 @@ void	ScalarConverter::setType() {
 		this->_type = DOUBLE_T; }
 	else if (this->isSpecial()) {
 		this->_type = SPECIAL_T; }
+	else this->_type = NO_T;
+}
+
+int		ScalarConverter::getType() const {
+	return (this->_type);
 }
 
 /* actions */
 void	ScalarConverter::convert() {
-	std::cout << this->isDouble() << std::endl;
+	this->setType();
+	try {
+		this->isImpossible();
+	} catch (std::exception &e) {
+		std::cout << "Exception: " << e.what() << std::endl;
+		return ;
+	}
+	switch (this->getType()) {
+		case CHAR_T:
+			std::cout << this->getSliteral()<<std::endl;
+			break;
+	}
 }

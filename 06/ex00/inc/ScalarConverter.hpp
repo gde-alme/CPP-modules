@@ -3,12 +3,19 @@
 
 # include <string>
 # include <iostream>
+# include <cstdlib>
+# include <cfloat>
+# include <cmath>
 
-# define CHAR_T		1;
-# define INT_T		2;
-# define FLOAT_T	3;
-# define DOUBLE_T	4;
-# define SPECIAL_T	5;
+enum s_type {
+	CHAR_T,
+	INT_T,
+	FLOAT_T,
+	DOUBLE_T,
+	SPECIAL_T,
+	NO_T
+};
+
 
 class ScalarConverter {
 	private:
@@ -26,6 +33,7 @@ class ScalarConverter {
 		bool	isDouble() const;
 		bool	isSpecial() const;
 		void	setType();
+		void	isImpossible();
 	public:
 		ScalarConverter(std::string);
 		ScalarConverter(const ScalarConverter &);
@@ -33,7 +41,15 @@ class ScalarConverter {
 		ScalarConverter	&operator=(const ScalarConverter &);
 
 		std::string	getSliteral() const;
+		int			getType() const;
 		void		convert();
+
+		class OverflowException : public std::exception {
+			public:
+				virtual const char	*what() const throw() {
+					return ("overflow");
+				}
+		}OverflowExept;
 };
 
 std::ostream	&operator<<(std::ostream &, const ScalarConverter &);
