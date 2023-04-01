@@ -10,8 +10,8 @@ int main(int argc, char *argv[]) {
 	try {
 		a.convert();
 	} catch (std::exception &e) { 
-		std::cout << "Can't convert bc " << e.what() << std::endl;
+		std::cout << "\nCan't convert bc " << e.what() << std::endl << std::endl;
 		return (0);
 	}
-	std::cout << a << std::endl;
+	std::cout << std::endl << a << std::endl;
 }

@@ -6,6 +6,7 @@
 # include <cstdlib>
 # include <cfloat>
 # include <cmath>
+# include <climits>
 
 enum s_type {
 	CHAR_T,
@@ -48,6 +49,18 @@ class ScalarConverter {
 		double		getDoubleConvert() const;
 		
 		void		convert();
+
+		void		printChar() const;
+		void		printInt() const;
+		void		printFloat() const;
+		void		printDouble() const;
+
+		class NotScalarType : public std::exception {
+			public:
+				virtual const char *what() const throw() {
+					return ("not a scalar type");
+				}
+		}NotScalar;
 
 		class OverflowException : public std::exception {
 			public:

@@ -32,10 +32,10 @@ ScalarConverter	&ScalarConverter::operator=(const ScalarConverter &ref) {
 }
 
 std::ostream	&operator<<(std::ostream &fd, const ScalarConverter &ref) {
-	fd << ref.getCharConvert() << std::endl;
-	fd << ref.getIntConvert() << std::endl;
-	fd << ref.getFloatConvert() << std::endl;
-	fd << ref.getDoubleConvert() << std::endl;
+	fd << "char: "; ref.printChar();
+	fd << "int: "; ref.printInt();
+	fd << "float: "; ref.printFloat();
+	fd << "double: "; ref.printDouble();
 
 	return (fd);
 }
@@ -109,7 +109,7 @@ bool	ScalarConverter::isImpossible() {
 	switch (this->getType()) {
 		case INT_T:
 			tmp = std::strtol(this->_sliteral.c_str(), &end, 10);
-			if (tmp > 2147483647 || tmp < -2147483648) {
+			if (tmp > INT_MAX || tmp < INT_MIN) {
 				throw OverflowExept;
 				break ;
 			}
@@ -177,6 +177,10 @@ void	ScalarConverter::setType() {
 /* actions */
 void	ScalarConverter::convert() {
 	this->setType();
+	if (this->getType() == NO_T) {
+		throw NotScalar;
+		return ;
+	}
 	if (this->isImpossible())
 		return ;
 	switch (this->getType()) {
@@ -204,4 +208,63 @@ void	ScalarConverter::convert() {
 		default:
 			break ;
 	}
+}
+
+void	ScalarConverter::printChar() const {
+	int type = this->getType();
+	if (type == CHAR_T)
+			std::cout << this->getCharConvert() << std::endl;
+	else if ((type == INT_T || type == FLOAT_T || type == DOUBLE_T) && this->getDoubleConvert() < 128) {
+		if (std::isprint(this->getDoubleConvert())) { std::cout << (char)this->getIntConvert() << std::endl; }
+		else { std::cout << "Non displayable" << std::endl; }
+	}
+	else
+		std::cout << "Impossible" << std::endl;
+}
+
+void	ScalarConverter::printInt() const {
+	int type = this->getType();
+	if (type == INT_T || type == CHAR_T)
+		std::cout << this->getIntConvert() << std::endl;
+	else if (type == FLOAT_T || type == DOUBLE_T) {
+		if (this->getFloatConvert() > INT_MAX || this->getFloatConvert() < INT_MIN)
+			std::cout << "Impossible" << std::endl;
+		else
+			std::cout << this->getIntConvert() << std::endl;
+	}
+	else
+		std::cout << "Impossible" << std::endl;
+}
+
+void	ScalarConverter::printFloat() const {
+	int type = this->getType();
+	if (type == DOUBLE_T && (this->getDoubleConvert() > FLT_MAX || this->getDoubleConvert() < FLT_MIN))
+		std::cout << "Impossible" << std::endl;
+	else if (type == SPECIAL_T) {
+		if (this->getSliteral() == "nanf")
+			std::cout << this->getSliteral() << std::endl;
+		else if (this->getSliteral()[this->getSliteral().length() - 2] == 'f')
+			std::cout << this->getSliteral() << std::endl;
+		else
+			std::cout << this->getSliteral() + "f" << std::endl;
+	}
+	else if (this->getFloatConvert() - (long)this->getFloatConvert() == 0.0f)
+		std::cout << this->getFloatConvert() << ".0f" << std::endl;
+	else
+		std::cout << this->getFloatConvert() << "f" << std::endl;
+}
+
+void	ScalarConverter::printDouble() const {
+	if (this->getType() == SPECIAL_T) {
+		if (this->getSliteral() == "nanf")
+			std::cout << this->getSliteral().substr(0,this->getSliteral().length() - 1) << std::endl;
+		else if (this->getSliteral()[this->getSliteral().length() - 2] == 'f')
+			std::cout << this->getSliteral().substr(0,this->getSliteral().length() - 1) << std::endl;
+		else
+			std::cout << this->getSliteral() << std::endl;
+	}
+	else if (this->getDoubleConvert() - (long long)this->getDoubleConvert() == 0.0f)
+		std::cout << this->getDoubleConvert() << ".0" <<std::endl;
+	else
+		std::cout << this->getDoubleConvert() << std::endl;
 }
