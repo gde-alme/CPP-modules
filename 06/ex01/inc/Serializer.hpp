@@ -2,7 +2,7 @@
 #define __SERIALIZE_HPP__
 
 # include "data.h"
-# include <cstdint>
+# include <stdint.h>
 # include <iostream>
 
 class Serialize {
@@ -12,8 +12,9 @@ class Serialize {
 		Serialize(const Serialize &);
 		~Serialize();
 		Serialize	&operator=(const Serialize &);
+
 		uintptr_t	serialize(Data *);
-		Data 		deserialize(uintptr_t);
+		Data 		*deserialize(uintptr_t);
 };
 
 #endif
