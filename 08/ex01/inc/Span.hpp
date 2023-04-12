@@ -7,6 +7,8 @@
 
 # include <iostream>
 # include <vector>
+# include <algorithm>
+# include <limits>
 
 class Span {
 	private:
@@ -19,8 +21,11 @@ class Span {
 		Span(const Span &);
 		Span	operator=(const Span &);
 
+		unsigned int		getN() const;
+		std::vector<int>	getArr() const;
+
 		void	addNumber(int);
-		void	addNumbers();
+		void	addNumbers(std::vector<int>::const_iterator, std::vector<int>::const_iterator);
 
 		unsigned int	shortestSpan();
 		unsigned int	longestSpan();
@@ -28,16 +33,18 @@ class Span {
 		class MaxCapacityException : std::exception {
 			public:
 				virtual const char *what() const throw() {
-					return ("Vector size limit");
+					return ("Exception thrown: vector size limit");
 				};
 		}MaxCapacityEx;
 
 		class NoElementsException : std::exception {
 			public:
 				virtual const char *what() const throw() {
-					return ("No elements to get Span");
+					return ("Exception thrown: no elements to get Span");
 				};
 		}NoElementsEx;
 };
+
+std::ostream	&operator<<(std::ostream &, const Span &);
 
 #endif
