@@ -8,26 +8,29 @@ int main() {
 	myStack.push(42);
 	myStack.push(63);
 
-	//std::cout << myStack.top() << std::endl;
+	std::cout << std::endl << "top:" << myStack.top() << std::endl << std::endl;
 
 	myStack.pop();
 
-	//std::cout << myStack.size() << std::endl;
+	std::cout << "curr stack size: " << myStack.size() << std::endl << std::endl;
 	
-	std::cout << "##########################" << std::endl;
 	srand(time(NULL));
 	for (int i = 0; i < 12; i++) {
 		int	v = abs(i * rand() % 100);
-		std::cout << v << std::endl;
+		std::cout << "adding " << v << " to stack " << std::endl;
 		myStack.push(v);
 	}
-	std::cout << "###########################" << std::endl;
 
+	std::cout << std::endl << "===============Full Stack===============" << std::endl << std::endl;
 	std::cout << myStack << std::endl;
+	std::cout << "========================================" << std::endl;
 
 	MutantStack<int>::iterator it = myStack.begin();
-	MutantStack<int>::iterator it_2 = myStack.end();
+	//MutantStack<int>::iterator it_2 = myStack.end();
 
-	std::cout << *it << std::endl;
-	std::cout << *it_2 << std::endl;
+	std::cout << "1st value: " << *it << std::endl;
+	it++;
+	std::cout << "2nd value: " << *it << std::endl;  
+	it--;
+	std::cout << "1st value: " << *it << std::endl;
 }
