@@ -43,26 +43,45 @@ void	BitcoinExchange::parseCsv(std::string pathToFile) {
 				date = curr_line.substr(0, curr_line.find(','));
 				value = atof(curr_line.substr(curr_line.find(',') + 1).c_str());
 				_dataset[date] = value;
-				std::cout << "ok" << std::endl;
-				//this->_dataset.insert(std::make_pair(curr_line.substr(0, curr_line.find(',')), atof(curr_line.substr(curr_line.find(',') + 1).c_str())));
 			}
-			//split string in two
-
-			//check if date && value is valid
-			//	year-month-day
-			//		year >= 2009 && <= 2023
-			//		month > 0 && <= 12
-			//		day > 0 && <= 31
-			//	value >= 0 && <= 1000
-			//add to map
 		}
 		fd.close();
 	} else {
 		std::cerr << "Error: Failed to open file: " << pathToFile << std::endl;
+		throw	openFileException;
 	}
+}
 
-	for (std::map<std::string, float>::const_iterator it = this->_dataset.begin(); it != _dataset.end(); ++it) {
-		std::cout << it->first << " : " << it->second << std::endl;
+float	BitcoinExchange::getValue(std::string date) const {
+	//try { _parseDate(date); } catch (std::exception &e) { throw noHitException; }
+	
+	if (_dataset.find(date) != _dataset.end())
+		return (_dataset.find(date)->second);
+
+	std::map<std::string, float>::const_iterator it = _dataset.begin();
+	std::map<std::string, float>::const_iterator closest_date; //implement hash table ?
+
+	std::cout << "data og:" << date << std::endl;
+
+	for (std::size_t i = 1; i != date.length(); i++) {
+		while (it != _dataset.end()) {
+			if (it->first.substr(0, i) != date.substr(0, i)) {
+				closest_date = it;
+				it++;
+			}
+			else
+				break ;
+		}
+		if (it == _dataset.end()) { 
+			i = 1; 
+			std::cout << date << std::endl;
+		       	if ((date[3] > '0')
+				throw noHitException;
+		}
 	}
-
+	if (it != _dataset.end()) {
+		std::cout << closest_date->first << " : " << std::flush;
+		return (closest_date->second);
+	}
+	throw	noHitException;
 }

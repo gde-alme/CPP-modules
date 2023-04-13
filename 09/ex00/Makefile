@@ -48,7 +48,6 @@ clean:
 	
 fclean: clean
 	$(RM) $(NAME)
-	$(RM) data.csv
 
 re: fclean all
 
