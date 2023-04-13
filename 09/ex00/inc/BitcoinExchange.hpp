@@ -5,6 +5,8 @@
 # include <string>
 # include <iostream>
 # include <fstream>
+# include <algorithm>
+# include <cstdlib>
 
 # ifndef VERBOSE
 # define VERBOSE true
@@ -19,7 +21,7 @@
 
 class BitcoinExchange {
 	private:
-		std::map<std::string, int>	_dataset;
+		std::map<std::string, float>	_dataset;
 	public:
 		BitcoinExchange();
 		BitcoinExchange(const BitcoinExchange &);
