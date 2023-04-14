@@ -54,6 +54,8 @@ t_date	BitcoinExchange::_parseDate(std::string date) const {
 	return (newDate);
 }
 
+
+
 void	BitcoinExchange::parseCsv(std::string pathToFile) {
 	std::ifstream	fd(pathToFile.c_str());
 	std::string	curr_line;
@@ -72,7 +74,7 @@ void	BitcoinExchange::parseCsv(std::string pathToFile) {
 				_dataset[date] = value;
 			}
 			else { 	
-				std::cout << "Error: csv file: line [" << line << "]" << std::endl; 
+				std::cout << "Error: csv file: line [" << line << "]: " << std::flush; 
 				fd.close();
 				throw invalidCsvDataPoint;
 			}
@@ -85,17 +87,67 @@ void	BitcoinExchange::parseCsv(std::string pathToFile) {
 	}
 }
 
-float	BitcoinExchange::getValue(std::string date) const {
-	try { _parseDate(date); } catch (std::exception &e) { throw noHitException; }
+std::time_t	BitcoinExchange::_dateToUnixTime(t_date date) const {
+	std::tm	tminf	= {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+	tminf.tm_year	= date.year - 1900;
+	tminf.tm_mon	= date.month - 1;
+	tminf.tm_mday	= date.day;
+	tminf.tm_isdst	= -1;
 	
+	std::time_t	unix_time = std::mktime(&tminf);
 
-	//std::map<t_date, float>::const_iterator it = _dataset.begin();
-	//std::map<t_date, float>::const_iterator closest_date;
+	return (unix_time);
+}
 
-	//find year
-	//month
-	//day
+float	BitcoinExchange::getValue(std::string date) const {
+	t_date	sdate;
+	try { sdate = _parseDate(date); } catch (std::exception &e) { throw; }
 
-	std::cout << "data og:" << date << std::endl;
-	throw	noHitException;
+	std::map<t_date, float>::const_iterator fit = _dataset.find(sdate);
+	if (fit != _dataset.end())
+		return (fit->second);
+
+	std::map<t_date, float>::const_iterator it = _dataset.begin();
+	std::map<t_date, float>::const_iterator it_save = it;
+	std::time_t	sdate_t = _dateToUnixTime(sdate);
+	for (;it != _dataset.end(); it++) {
+		if (_dateToUnixTime(it->first) < sdate_t)
+			it_save = it;
+		else
+			return (it_save->second);
+	}
+	it--;
+	return (it->second);
+}
+
+float	BitcoinExchange::_getAmountBtc(std::string line) const {
+	if (std::count(line.begin(), line.end(), '|') != 1) throw invalidEvalDateValue;
+	line = line.substr(line.find('|') + 1);
+	float	amount = atof(line.c_str());
+	if (amount < 0.0f || amount > 1000.0f) throw invalidEvalDateValue;
+	return (amount);
+}
+
+void	BitcoinExchange::parseEval(std::string pathToFile) const {
+	std::ifstream	fd(pathToFile.c_str());
+	std::string	curr_line;
+	int		line = 1;
+	float		btcA;
+	float		btcV;
+
+	if (fd.is_open()) {
+		std::getline(fd, curr_line);
+		while (std::getline(fd, curr_line)) {
+			try { btcV = getValue(curr_line); } catch (std::exception &e) { std::cout << e.what() << std::endl; continue ; }
+			try { btcA = _getAmountBtc(curr_line); } catch (std::exception &e) { std::cout << e.what() << std::endl; continue ; }
+			btcV *= btcA;
+			std::cout << "=> " << std::fixed << std::setprecision(4) << btcV << std::endl;
+			line++;
+		}
+		fd.close();
+	} else {
+		std::cerr << "Error: Failed to open file: " << pathToFile << std::endl;
+		throw	openFileException;
+	}
+	
 }

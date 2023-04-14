@@ -7,6 +7,8 @@
 # include <fstream>
 # include <algorithm>
 # include <cstdlib>
+# include <ctime>
+# include <iomanip>
 
 # ifndef VERBOSE
 # define VERBOSE true
@@ -34,9 +36,9 @@
 
 /**
  *	BitcoinExchange class: 
- *	@parseCsv:	populates a map<date, value> with data from a data.csv file.
+ *	@parseCsv:	populates a map<time_since_epoch, value> with data from a data.csv file.
  *	@getValue:	retrieves each given date to the corresponding value. 
- *	@parseEval:	iterates through a txt file calling getValue for each valid date.
+ *	@parseEval:	iterates through a txt file calling getValue for each valid date * nb_of_btc.
 */
 class BitcoinExchange {
 	private:
@@ -45,6 +47,8 @@ class BitcoinExchange {
 		bool	__isValidDate(std::string) const;
 		bool	__isValidCsvDataPoint(std::string) const;
 		t_date	_parseDate(std::string) const;
+		std::time_t	_dateToUnixTime(t_date) const;
+		float	_getAmountBtc(std::string line) const;
 	public:
 		BitcoinExchange();
 		BitcoinExchange(const BitcoinExchange &);
@@ -54,6 +58,7 @@ class BitcoinExchange {
 
 		void	parseCsv(std::string pathToFile);
 		float	getValue(std::string date) const;
+		void	parseEval(std::string pathToFile) const;
 
 		class openFileException : public std::exception {
 			virtual const char *what() const throw() {
@@ -73,11 +78,11 @@ class BitcoinExchange {
 			}
 		}invalidDate;
 
-		class noHitException : std::exception {
+		class invalidEvalDateValue : public std::exception {
 			virtual const char *what() const throw() {
-				return("No hit on map<string, float>");
+				return("Can't solve date and/or btc value");
 			}
-		}noHitException;
+		}invalidEvalDateValue;
 };
 
 #endif

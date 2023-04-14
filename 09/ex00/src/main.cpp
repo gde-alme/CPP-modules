@@ -9,7 +9,6 @@ int main() {
 		std::cout << e.what() << std::endl;
 		return (0);
 	}
+	btcExcApi.parseEval("ex.txt");
 	return (0);
-	//std::cout << btcExcApi.getValue("2009-01-03") << std::endl;
-	//std::cout << btcExcApi.getValue("2009-01-01") << std::endl;
 }
