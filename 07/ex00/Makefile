@@ -6,7 +6,7 @@
 #    By: gde-alme <gde-alme@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/09 01:03:14 by gde-alme          #+#    #+#              #
-#    Updated: 2023/04/02 14:18:28 by gde-alme         ###   ########.fr        #
+#    Updated: 2023/04/14 16:32:04 by gde-alme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,6 @@ clean:
 	
 fclean: clean
 	$(RM) $(NAME)
-	$(RM) *_shrubbery
 
 re: fclean all
 
