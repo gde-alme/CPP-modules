@@ -6,7 +6,7 @@
 
 namespace myspace {
 	template<typename T>
-	void	iter(T *arr, int arr_size, void (*f)(T &)) {
+	void	iter(T *arr, int arr_size, void (*f)(T const &)) {
 		for (int i = 0; i < arr_size; i++) {
 			f(arr[i]);
 		}
