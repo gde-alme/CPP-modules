@@ -131,6 +131,7 @@ float	BitcoinExchange::_getAmountBtc(std::string line) const {
 void	BitcoinExchange::parseEval(std::string pathToFile) const {
 	std::ifstream	fd(pathToFile.c_str());
 	std::string	curr_line;
+	t_date		cdate;
 	int		line = 1;
 	float		btcA;
 	float		btcV;
@@ -138,10 +139,12 @@ void	BitcoinExchange::parseEval(std::string pathToFile) const {
 	if (fd.is_open()) {
 		std::getline(fd, curr_line);
 		while (std::getline(fd, curr_line)) {
-			try { btcV = getValue(curr_line); } catch (std::exception &e) { std::cout << e.what() << std::endl; continue ; }
 			try { btcA = _getAmountBtc(curr_line); } catch (std::exception &e) { std::cout << e.what() << std::endl; continue ; }
+			try { btcV = getValue(curr_line); } catch (std::exception &e) { std::cout << e.what() << std::endl; continue ; }
 			btcV *= btcA;
-			std::cout << "=> " << std::fixed << std::setprecision(4) << btcV << std::endl;
+			cdate = _parseDate(curr_line);
+			std::cout << cdate.year << "-" << cdate.month << "-" << cdate.day << "-" << std::flush;
+			std::cout << " => " << std::fixed << std::setprecision(4) << btcV << std::endl;
 			line++;
 		}
 		fd.close();
