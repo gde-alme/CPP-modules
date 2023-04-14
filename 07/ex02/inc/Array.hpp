@@ -2,7 +2,10 @@
 #define __ARRAY_HPP__
 
 # include <iostream>
-# include "macros.hpp"
+
+# ifndef VERBOSE
+# define VERBOSE true
+# endif
 
 template<typename T>
 class Array {
@@ -15,7 +18,6 @@ class Array {
 			if (VERBOSE)
 				std::cout << "[ArrayTemplate] default constructor called" << std::endl;
 		};
-
 		Array(unsigned int n) : _arr(new T[n]), _n(n) {
 			if (VERBOSE)
 				std::cout << "[ArrayTemplate] " << n << " size array created" << std::endl;
@@ -36,9 +38,6 @@ class Array {
 		/* operators */
 		Array	&operator=(const Array &ref) {
 			if (this != &ref) {
-				if (this->_arr[1])
-					std::cout << "ok" << std::endl;
-				//delete [] this->_arr;
 				this->_arr = new T[ref.size()];
 				this->_n = ref.size();
 				for (unsigned int i = 0; i < ref._n; i++) {

@@ -17,6 +17,7 @@ int main(int, char**)
     }
     //SCOPE
     {
+	std::cout << "1st v: " << numbers[1] << std::endl;
         Array<int> tmp = numbers;
         Array<int> test(tmp);
     }
