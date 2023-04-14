@@ -18,7 +18,7 @@
  *	Struct s_date:
  *	@data:		year, month, day.
  *	@operator<:	operator for map<t_date, T>
- * */
+ **/
  typedef struct s_date {
  	int	year;
 	int	month;
@@ -39,7 +39,7 @@
  *	@parseCsv:	populates a map<time_since_epoch, value> with data from a data.csv file.
  *	@getValue:	retrieves each given date to the corresponding value. 
  *	@parseEval:	iterates through a txt file calling getValue for each valid date * nb_of_btc.
-*/
+ **/
 class BitcoinExchange {
 	private:
 		std::map<t_date, float>	_dataset;
