@@ -2,7 +2,7 @@
 
 BitcoinExchange::BitcoinExchange() {
 	if (VERBOSE)
-		std::cout << "[BitcoinExchange] default constructor called" << std::endl;
+		std::cout << "[BitcoinExchange] default constructor called" << std::endl << std::endl;
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &ref) {
@@ -20,30 +20,63 @@ BitcoinExchange	&BitcoinExchange::operator=(const BitcoinExchange &ref) {
 
 BitcoinExchange::~BitcoinExchange() {
 	if (VERBOSE)
-		std::cout << "[BitcoinExchange] default destructor called" << std::endl;
+		std::cout << "\n[BitcoinExchange] default destructor called" << std::endl;
 }
 
-bool	_isValidCsvDataPoint(std::string str) {
+bool	BitcoinExchange::__isValidCsvDataPoint(std::string str) const {
+
 	if (std::count(str.begin(), str.end(), ',') != 1) return (false);
-	if (std::count(str.begin(), str.end(), '-') != 2) return (false);
-	if (!std::isdigit(str[0])) return (false);
-	if (!std::isdigit(str[str.find("-") + 1])) return (false);
-	if (!std::isdigit(str[str.find("-", str.find("-") + 1) + 1])) return (false);
 	return (std::isdigit(str[str.find(",") + 1]));
 }
 
+bool	BitcoinExchange::__isValidDate(std::string date) const {
+	int	year, month, day;
+	
+	if (std::count(date.begin(), date.end(), '-') != 2) return (false);
+	if (sscanf(date.c_str(), "%d-%d-%d", &year, &month, &day) != 3) return (false);
+	if (year > 2023 || year < 2009) return (false);
+	if (month > 12 || month < 1) return (false);
+	if (day > 31 || day < 1) return (false);
+	return (true);
+}
+
+t_date	BitcoinExchange::_parseDate(std::string date) const {
+	if (!__isValidDate(date)) throw invalidDate;
+
+	int	year, month, day;
+	
+	sscanf(date.c_str(), "%d-%d-%d", &year, &month, &day);
+	t_date	newDate = {
+		.year	= year,
+		.month	= month,
+		.day	= day
+	};
+	return (newDate);
+}
+
 void	BitcoinExchange::parseCsv(std::string pathToFile) {
-	std::ifstream	fd(&pathToFile[0]);
-	std::string	curr_line, date;
+	std::ifstream	fd(pathToFile.c_str());
+	std::string	curr_line;
+	t_date		date;
 	float		value;
+	int		line = 2;
 
 	if (fd.is_open()) {
+		std::getline(fd, curr_line);
 		while (std::getline(fd, curr_line)) {
-			if (_isValidCsvDataPoint(curr_line)) {
-				date = curr_line.substr(0, curr_line.find(','));
+			if (__isValidCsvDataPoint(curr_line)) {
+				try {
+					date = _parseDate(curr_line.substr(0, curr_line.find(',')));
+				} catch (std::exception &e) { std::cout << "Error: invalid date in line [" << line << "] in file [" << pathToFile << "]" << std::endl;; fd.close(); return ;}
 				value = atof(curr_line.substr(curr_line.find(',') + 1).c_str());
 				_dataset[date] = value;
 			}
+			else { 	
+				std::cout << "Error: csv file: line [" << line << "]" << std::endl; 
+				fd.close();
+				throw invalidCsvDataPoint;
+			}
+			line++;
 		}
 		fd.close();
 	} else {
@@ -53,35 +86,16 @@ void	BitcoinExchange::parseCsv(std::string pathToFile) {
 }
 
 float	BitcoinExchange::getValue(std::string date) const {
-	//try { _parseDate(date); } catch (std::exception &e) { throw noHitException; }
+	try { _parseDate(date); } catch (std::exception &e) { throw noHitException; }
 	
-	if (_dataset.find(date) != _dataset.end())
-		return (_dataset.find(date)->second);
 
-	std::map<std::string, float>::const_iterator it = _dataset.begin();
-	std::map<std::string, float>::const_iterator closest_date; //implement hash table ?
+	//std::map<t_date, float>::const_iterator it = _dataset.begin();
+	//std::map<t_date, float>::const_iterator closest_date;
+
+	//find year
+	//month
+	//day
 
 	std::cout << "data og:" << date << std::endl;
-
-	for (std::size_t i = 1; i != date.length(); i++) {
-		while (it != _dataset.end()) {
-			if (it->first.substr(0, i) != date.substr(0, i)) {
-				closest_date = it;
-				it++;
-			}
-			else
-				break ;
-		}
-		if (it == _dataset.end()) { 
-			i = 1; 
-			std::cout << date << std::endl;
-		       	if ((date[3] > '0')
-				throw noHitException;
-		}
-	}
-	if (it != _dataset.end()) {
-		std::cout << closest_date->first << " : " << std::flush;
-		return (closest_date->second);
-	}
 	throw	noHitException;
 }
