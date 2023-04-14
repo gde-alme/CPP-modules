@@ -15,9 +15,9 @@
 # endif
 
 /**
- * 
- *
- *
+ *	Struct s_date:
+ *	@data:		year, month, day.
+ *	@operator<:	operator for map<t_date, T>
  * */
  typedef struct s_date {
  	int	year;
