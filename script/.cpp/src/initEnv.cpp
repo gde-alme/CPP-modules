@@ -2,7 +2,7 @@
 
 void	Cpp::initEnv() {
 	std::ofstream	makef("Makefile");
-	std::ifstream	makef_ex("data/Makefile");
+	std::ifstream	makef_ex(std::string(LOCALPATH) + ".cpp/data/Makefile");
 	std::string	curr_line;
 
 	if (makef.is_open()) {

@@ -5,6 +5,10 @@
 # include <fstream>
 # include <sys/stat.h>
 
+# ifndef LOCALPATH
+# define LOCALPATH "/home/gde-alme/"
+# endif
+
 /*
  *	Cpp:
  *	@createClass:	create a basic class hpp and cpp in orthodox format
