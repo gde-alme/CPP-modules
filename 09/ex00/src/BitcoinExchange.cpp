@@ -133,18 +133,19 @@ void	BitcoinExchange::parseEval(std::string pathToFile) const {
 	std::string	curr_line;
 	t_date		cdate;
 	int		line = 1;
-	float		btcA;
-	float		btcV;
+	double		btcA;
+	double		btcV;
 
 	if (fd.is_open()) {
 		std::getline(fd, curr_line);
 		while (std::getline(fd, curr_line)) {
-			try { btcA = _getAmountBtc(curr_line); } catch (std::exception &e) { std::cout << "Invalid amount of btc" << std::endl; continue ; }
-			try { btcV = getValue(curr_line); } catch (std::exception &e) { std::cout << e.what() << std::endl; continue ; }
-			btcV *= btcA;
+			try { btcA = (double)_getAmountBtc(curr_line); } catch (std::exception &e) { std::cout << "Invalid amount of btc" << std::endl; continue ; }
+			try { btcV = (double)getValue(curr_line); } catch (std::exception &e) { std::cout << e.what() << std::endl; continue ; }
 			cdate = _parseDate(curr_line);
-			std::cout << cdate.year << "-" << cdate.month << "-" << cdate.day << std::flush;
-			std::cout << " => " << std::fixed << std::setprecision(4) << btcV << std::endl;
+			std::cout << std::setw(4) << std::setfill('0') << cdate.year << "-"
+				<< std::setw(2) << std::setfill('0') << cdate.month << "-"
+				<< std::setw(2) << std::setfill('0') << cdate.day << std::flush;
+			std::cout << " => " << btcV * btcA << std::endl;
 			line++;
 		}
 		fd.close();
