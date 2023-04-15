@@ -139,11 +139,11 @@ void	BitcoinExchange::parseEval(std::string pathToFile) const {
 	if (fd.is_open()) {
 		std::getline(fd, curr_line);
 		while (std::getline(fd, curr_line)) {
-			try { btcA = _getAmountBtc(curr_line); } catch (std::exception &e) { std::cout << e.what() << std::endl; continue ; }
+			try { btcA = _getAmountBtc(curr_line); } catch (std::exception &e) { std::cout << "Invalid amount of btc" << std::endl; continue ; }
 			try { btcV = getValue(curr_line); } catch (std::exception &e) { std::cout << e.what() << std::endl; continue ; }
 			btcV *= btcA;
 			cdate = _parseDate(curr_line);
-			std::cout << cdate.year << "-" << cdate.month << "-" << cdate.day << "-" << std::flush;
+			std::cout << cdate.year << "-" << cdate.month << "-" << cdate.day << std::flush;
 			std::cout << " => " << std::fixed << std::setprecision(4) << btcV << std::endl;
 			line++;
 		}
