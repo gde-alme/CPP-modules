@@ -28,7 +28,7 @@ void	Cpp::createClass(std::string class_name) {
 	std::string		curr_line;
 
 	std::ofstream	fd_decla(class_name + ".hpp");
-	std::ifstream	fd_decla_ex("data/declaration.hpp");
+	std::ifstream	fd_decla_ex(std::string(LOCALPATH) + ".cpp/data/declaration.hpp");
 	if (fd_decla.is_open()) {
 		if (fd_decla_ex.is_open()) {
 			while (std::getline(fd_decla_ex, curr_line)) {
@@ -40,7 +40,7 @@ void	Cpp::createClass(std::string class_name) {
 	}
 
 	std::ofstream	fd_imple(class_name + ".cpp");
-	std::ifstream	fd_imple_ex("data/implementation.cpp");
+	std::ifstream	fd_imple_ex(std::string(LOCALPATH) + ".cpp/data/implementation.cpp");
 	if (fd_imple.is_open()) {
 		if (fd_imple_ex.is_open()) {
 			while (std::getline(fd_imple_ex, curr_line)) {
