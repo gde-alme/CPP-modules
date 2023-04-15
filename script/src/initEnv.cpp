@@ -1,6 +1,6 @@
 #include "../inc/cpp.hpp"
 
-void	Cpp::initEnv(std::string prog_name) {
+void	Cpp::initEnv() {
 	std::ofstream	makef("Makefile");
 	std::ifstream	makef_ex("data/Makefile");
 	std::string	curr_line;
@@ -14,4 +14,6 @@ void	Cpp::initEnv(std::string prog_name) {
 		}
 		makef.close();
 	}
+	mkdir("src", S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);	
+	mkdir("inc", S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);	
 }

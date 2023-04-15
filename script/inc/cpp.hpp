@@ -3,6 +3,7 @@
 
 # include <iostream>
 # include <fstream>
+# include <sys/stat.h>
 
 /*
  *	Cpp:
@@ -15,7 +16,7 @@ class Cpp {
 		~Cpp() {};
 
 		void	createClass(std::string class_name);
-		void	initEnv(std::string prog_name);
+		void	initEnv();
 	protected:
 		std::string	_parseLine(std::string line, std::string class_name);
 };
