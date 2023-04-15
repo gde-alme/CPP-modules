@@ -23,7 +23,7 @@ RPN::~RPN() {
 }
 
 bool	is_valid(char c) {
-	return (c != '+' && c != '-' && c != '*' && c != '/');
+	return (c == '+' || c == '-' || c == '*' || c == '/');
 }
 
 int	RPN::computeString(std::string rpn_string) {
@@ -36,19 +36,31 @@ int	RPN::computeString(std::string rpn_string) {
 		if (std::isdigit(c)) {
 			iss.putback(c);
 			iss >> num;
-			std::cout << num << std::endl;
 			if (num > 10 || num < 0) throw	invalidToken;
 			_stack.push(num);
 		} else if (std::isspace(c)) {
 			continue ;
 		} else {
-			if (!is_valid(c))
-				throw	invalidToken;
+			if (!is_valid(c)) throw	invalidToken;
+			if (_stack.size() < 2) throw invalidToken;
+			num = _stack.top();
+			_stack.pop();
 			if (c == '+') {
-
+				num += _stack.top();
+			} else if (c == '-') {
+				num = _stack.top() - num;
+			} else if (c == '*') {
+				num *= _stack.top();
+			} else {
+				num = _stack.top() / num;
 			}
-			continue ;
+			_stack.pop();
+			_stack.push(num);
 		}
 	}
-	return (3);
+	if (_stack.size() > 1) { std::cout << "Invalid arithmetix expression" << std::endl; return 1; }
+	num = _stack.top();
+	_stack.pop();
+	std::cout << "rpn = " << num << std::endl;
+	return (num);
 }
