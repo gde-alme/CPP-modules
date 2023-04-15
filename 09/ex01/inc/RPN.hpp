@@ -4,6 +4,8 @@
 # include <iostream>
 # include <stack>
 # include <string>
+# include <sstream>
+# include <exception>
 
 # ifndef VERBOSE
 # define VERBOSE true
@@ -18,13 +20,19 @@ class RPN {
 	public:
 		RPN();
 		RPN(const RPN &);
-		~Rpn();
+		~RPN();
 
-		RPN	operator=(const RPN &);
+		RPN	&operator=(const RPN &);
 
-		float	computeString(std::string);
+		int	computeString(std::string);
+		class invalidTokenException : public std::exception {
+			public:
+				virtual const char *what() const throw() {
+					return ("Invalid Token in input: ");
+				}
+		}invalidToken;
 	private:
-		std::stack<double>	_stack;
+		std::stack<int>	_stack;
 };
 
 #endif
