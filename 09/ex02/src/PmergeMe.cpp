@@ -41,7 +41,7 @@ void	PmergeMe::parseInput(char **array) {
 
 void    PmergeMe::merge_insert(std::vector<int> &arr, std::list<list<int> > &sorted) {
 	//divide original array into n subarrays of size x
-	//insertion sort into said subarrays
+	//insertion sort into said subarrays (.insert() using std::lower_bound)
 	//merge sort back int one array
 }
 
