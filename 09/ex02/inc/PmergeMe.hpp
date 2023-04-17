@@ -6,7 +6,7 @@
 # endif
 
 # ifndef THRESHOLD
-# define THRESHOLD 3
+# define THRESHOLD 200
 # endif
 
 # include <string>
@@ -15,6 +15,7 @@
 # include <ctype.h>
 # include <exception>
 # include <cmath>
+# include <ctime>
 # include <algorithm>
 # include <vector>
 # include <list>
@@ -39,6 +40,7 @@ class  PmergeMe {
 		void	parseInput(char **arr);
 		void	sortArray();
 		void	merge_insert(std::vector<int> &arr, std::list<int> &result);
+		void	merge_insert(std::vector<int> &arr);
 
 		class	invalidTokenException : public std::exception {
 			virtual const char *what() const throw() {
@@ -46,8 +48,13 @@ class  PmergeMe {
 			}
 		}invalidToken;
 
+	protected:
+		void	insertion_sort(std::vector<int> &arr);
+		void	merge_sort(std::vector<int> &arr);
+
 	private:
 		std::list<int>		_sorted;
+		std::vector<int>	_vsorted;
 		std::vector<int>	_unsorted;
 		int			_size;
 };

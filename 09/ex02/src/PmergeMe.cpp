@@ -65,14 +65,41 @@ void    PmergeMe::merge_insert(std::vector<int> &arr, std::list<int> &sorted) {
 	}
 }
 
+void	PmergeMe::insertion_sort(std::vector<int> &arr) {
+	int	key, j;
+
+	for (int it = 1; it < (int)arr.size(); it++) {
+		key = it;
+		j = it - 1;
+		while (j >= 0 && arr[j] > key) {
+			arr[j + 1] = arr[j];
+			j--;
+		}
+		arr[j + 1] = key;
+	}
+}
+
 void	PmergeMe::sortArray() {
+	_vsorted = _unsorted;
+
+	clock_t	start = clock();
 	merge_insert(_unsorted, _sorted);
+	clock_t	end = clock();
+
+	double	elapsed_ms_list = double(end - start) / (CLOCKS_PER_SEC/1000.0);
+
+	start = clock();
+	insertion_sort(_vsorted);
+	end = clock();
+
+	double	elapsed_ms_vec = double(end -start) / (CLOCKS_PER_SEC/1000.0);
+
 	std::cout << "\nBefore: " << std::flush;
 	for (std::vector<int>::iterator it = _unsorted.begin(); it != _unsorted.end(); it++)
 		std::cout << *it << " " << std::flush;
-	std::cout << std::endl;
+	std::cout << "\nTime to process unsorted array using [list] " << elapsed_ms_list << std::endl << std::endl;
 	std::cout << "After: " << std::flush;
 	for (std::list<int>::iterator it = _sorted.begin(); it != _sorted.end(); it++)
 		std::cout << *it << " " << std::flush;
-	std::cout << std::endl << std::endl;
+	std::cout << "\nTime to process unsorted array using [vector] " << elapsed_ms_vec << std::endl << std::endl;
 }
