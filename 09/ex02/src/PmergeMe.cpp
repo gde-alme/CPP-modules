@@ -56,50 +56,23 @@ void    PmergeMe::merge_insert(std::vector<int> &arr, std::list<int> &sorted) {
 		}
 		subList.push_back(subArr);
 	}
-	/*
-	for (std::list<std::list<int> >::iterator it = subList.begin(); it != --subList.end()); it++) {
-		std::cout << "======================" << std::endl;
+	//merge sort back into one array
+	for (std::list<std::list<int> >::iterator it = subList.begin(); it != subList.end(); it++) {
 		for (std::list<int>::iterator in_it = it->begin(); in_it != it->end(); in_it++) {
-			std::cout << *in_it << " " << std::endl;
+			std::list<int>::iterator	tmpIt = std::lower_bound(_sorted.begin(), _sorted.end(), *in_it);
+			_sorted.insert(tmpIt, *in_it);
 		}
 	}
-	*/
-	//merge sort back int one array
-	std::cout << "before" << std::endl;
-	for (std::list<std::list<int> >::iterator it = subList.begin(); it != --subList.end(); it++) {
-		std::cout << "======================" << std::endl;
-		for (std::list<int>::iterator in_it = it->begin(); in_it != it->end(); in_it++) {
-			std::cout << *in_it << " " << std::endl;
-		}
-		std::cout << "======================" << std::endl;
-	}
-	std::list<std::list<int> >::iterator	sIt = subList.begin();
-	for (std::list<std::list<int> >::iterator it = ++subList.begin(); it != subList.end(); it++) {
-		for (std::list<int>::iterator in_it = it->begin(); in_it != it->end(); in_it++) {
-			std::list<int>::iterator	tmpIt = std::lower_bound(it->begin(), it->end(), *in_it);
-			std::cout << "inserting in:" << *in_it << std::endl;
-			sIt->insert(tmpIt, *in_it);
-			for (std::list<int>::iterator MEQUE = sIt->begin(); MEQUE != sIt->end(); MEQUE++)
-				std::cout << *MEQUE << " " << std::flush;
-			std::cout << std::endl;
-		}
-	}
-	std::cout << "\nafter" << std::endl;
-	for (std::list<std::list<int> >::iterator it = subList.begin(); it != --subList.end(); it++) {
-		std::cout << "======================" << std::endl;
-		for (std::list<int>::iterator in_it = it->begin(); in_it != it->end(); in_it++) {
-			std::cout << *in_it << " " << std::endl;
-		}
-		std::cout << "======================" << std::endl;
-	}/*
-	for (std::list<int>::iterator it = subList.begin()->begin(); it != subList.end()->end(); it++) {
-		std::cout << *it << " " << std::flush;
-	}
-	std::cout << std::endl;*/
-	
 }
 
 void	PmergeMe::sortArray() {
 	merge_insert(_unsorted, _sorted);
-	//display sorted
+	std::cout << "\nBefore: " << std::flush;
+	for (std::vector<int>::iterator it = _unsorted.begin(); it != _unsorted.end(); it++)
+		std::cout << *it << " " << std::flush;
+	std::cout << std::endl;
+	std::cout << "After: " << std::flush;
+	for (std::list<int>::iterator it = _sorted.begin(); it != _sorted.end(); it++)
+		std::cout << *it << " " << std::flush;
+	std::cout << std::endl << std::endl;
 }

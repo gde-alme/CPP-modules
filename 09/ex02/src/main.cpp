@@ -1,5 +1,6 @@
 #include "../inc/PmergeMe.hpp"
 
+/* to test: nums=$(suff -i 1-10000 -n 5000 | tr '\n' ' '); ./exec $nums */
 int main(int argc, char *argv[]) {
 	PmergeMe	sorter;
 

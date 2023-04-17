@@ -26,7 +26,7 @@
  *		3. Otherwise, recursively apply merge-insert sort to each subarray.
  *		4. Merge the sorted subarrays using the merge sort algorithm.
  * 	@parseInput:	Validate and tokenize input.
- * 	@
+ * 	@merge_insert:	Sort array using merge-insert sort.
  */
 class  PmergeMe {
 	public:
