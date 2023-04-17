@@ -39,21 +39,13 @@ void	PmergeMe::parseInput(char **array) {
 	}
 }
 
-void	PmergeMe::_insertionSort(std::vector<int> arr) {
-}
-
-void	PmergeMe::_merge(std::vector<int> arr) {
-}
-
-void    PmergeMe::merge_insert(std::vector<int> arr) {
-	int	n = (int)arr.size() / 2;
-
-	if (n <= THRESHOLD)
-		return (_insertionSort(arr));
-	for (std::vector<int>::iterator vit = arr.begin(); vit != arr.end(); vit++) {
-		
-	}
+void    PmergeMe::merge_insert(std::vector<int> &arr, std::list<list<int> > &sorted) {
+	//divide original array into n subarrays of size x
+	//insertion sort into said subarrays
+	//merge sort back int one array
 }
 
 void	PmergeMe::sortArray() {
+	merge_inset(_unsorted, _sorted);
+	//display sorted
 }

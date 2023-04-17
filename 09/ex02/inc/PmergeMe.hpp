@@ -38,9 +38,7 @@ class  PmergeMe {
 	
 		void	parseInput(char **arr);
 		void	sortArray();
-		void	merge_insert(std::vector<int> &arr, int left, int right);
-		void	_merge(std::vector<int> &arr, int left, int mid, int right);
-		void	_insertionSort(std::vector<int> &arr, int left, int right);
+		void	merge_insert(std::vector<int> &arr, std::list<list<int> > &result);
 
 		class	invalidTokenException : public std::exception {
 			virtual const char *what() const throw() {
@@ -49,9 +47,9 @@ class  PmergeMe {
 		}invalidToken;
 
 	private:
-		std::list<int>		_sorted;
-		std::vector<int>	_unsorted;
-		int			_size;
+		std::list<list<int> >		_sorted;
+		std::vector<int>		_unsorted;
+		int				_size;
 };
 
 #endif
