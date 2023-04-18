@@ -65,23 +65,42 @@ void    PmergeMe::merge_insert(std::vector<int> &arr, std::list<int> &sorted) {
 	}
 }
 
-void	PmergeMe::insertion_sort(std::vector<int> &arr) {
+void	PmergeMe::insertion_sort(std::vector<int> &unsorted, std::vector<int> &sorted) {
 	int	key, j;
+	sorted = unsorted;
 
-	for (int it = 1; it < (int)arr.size(); it++) {
-		key = it;
+	for (int it = 1; it < (int)sorted.size(); it++) {
+		key = sorted[it];
 		j = it - 1;
-		while (j >= 0 && arr[j] > key) {
-			arr[j + 1] = arr[j];
+		while (j >= 0 && sorted[j] > key) {
+			sorted[j + 1] = sorted[j];
 			j--;
 		}
-		arr[j + 1] = key;
+		sorted[j + 1] = key;
 	}
 }
 
-void	PmergeMe::sortArray() {
-	_vsorted = _unsorted;
+void	PmergeMe::merge_sort(std::vector<int> &arr1, std::vector<int> &arr2, std::vector<int> &sorted) {
+	int	i = 0, j = 0;
 
+	while (i < arr1.size() && j < arr2.size()) {
+		if (arr1[i] < arr2[i]) {
+			sorted.push_back(arr1[i]);
+			i++;
+		} else {
+			sorted.push_back(arr2[j]);
+			j++;
+		}
+	}
+	while (i < arr1.size()) { sorted.push_back(arr1[i]); i++; }
+	while (j < arr2.size()) { sorted,push_back(arr2[j]); j++; }
+}
+
+void	PmergeMe::merge_insert(std::vector<int> &unsorted, std::vector<int> &sorted) {
+	
+}
+
+void	PmergeMe::sortArray() {
 	clock_t	start = clock();
 	merge_insert(_unsorted, _sorted);
 	clock_t	end = clock();
@@ -89,7 +108,7 @@ void	PmergeMe::sortArray() {
 	double	elapsed_ms_list = double(end - start) / (CLOCKS_PER_SEC/1000.0);
 
 	start = clock();
-	insertion_sort(_vsorted);
+	insertion_sort(_unsorted, _vsorted);
 	end = clock();
 
 	double	elapsed_ms_vec = double(end -start) / (CLOCKS_PER_SEC/1000.0);
@@ -99,7 +118,7 @@ void	PmergeMe::sortArray() {
 		std::cout << *it << " " << std::flush;
 	std::cout << "\nTime to process unsorted array using [list] " << elapsed_ms_list << std::endl << std::endl;
 	std::cout << "After: " << std::flush;
-	for (std::list<int>::iterator it = _sorted.begin(); it != _sorted.end(); it++)
+	for (std::vector<int>::iterator it = _vsorted.begin(); it != _vsorted.end(); it++)
 		std::cout << *it << " " << std::flush;
 	std::cout << "\nTime to process unsorted array using [vector] " << elapsed_ms_vec << std::endl << std::endl;
 }
