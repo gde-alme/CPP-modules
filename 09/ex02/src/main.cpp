@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gde-alme <gde-alme@student.42lisboa.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/24 16:46:59 by gde-alme          #+#    #+#             */
+/*   Updated: 2023/04/24 16:47:00 by gde-alme         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/PmergeMe.hpp"
 
 /* to test: nums=$(suff -i 1-10000 -n 5000 | tr '\n' ' '); ./exec $nums */
@@ -11,6 +23,10 @@ int main(int argc, char *argv[]) {
 		return (1);
 	}
 
-	sorter.parseInput(++argv);
-	sorter.sortArray();
+	try {
+		sorter.parseInput(++argv);
+		sorter.sortArray();
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
 }

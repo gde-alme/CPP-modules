@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PmergeMe.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gde-alme <gde-alme@student.42lisboa.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/24 16:46:52 by gde-alme          #+#    #+#             */
+/*   Updated: 2023/04/24 16:46:54 by gde-alme         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/PmergeMe.hpp"
 
 PmergeMe::PmergeMe() {
@@ -123,6 +135,6 @@ void	PmergeMe::sortArray() {
 	std::cout << "\nAfter: " << std::flush;
 	for (std::vector<int>::iterator it = _vsorted.begin(); it != _vsorted.end(); it++)
 		std::cout << *it << " " << std::flush;
-	std::cout << "\n\nTime to process unsorted array using [list] " << elapsed_ms_list << std::endl;
-	std::cout << "Time to process unsorted array using [vector] " << elapsed_ms_vec << std::endl << std::endl;
+	std::cout << "\n\nTime to process unsorted array using [list] " << elapsed_ms_list << "ms" << std::endl;
+	std::cout << "Time to process unsorted array using [vector] " << elapsed_ms_vec << "ms" << std::endl << std::endl;
 }
