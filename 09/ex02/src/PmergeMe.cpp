@@ -6,7 +6,7 @@
 /*   By: gde-alme <gde-alme@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 16:46:52 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/04/24 16:46:54 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/05/02 14:56:58 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ PmergeMe	&PmergeMe::operator=(const PmergeMe &ref) {
 
 PmergeMe::~PmergeMe() {
 	if (VERBOSE)
-		std::cout << "[PmergeMe] default constructor called" << std::endl;
+		std::cout << "[PmergeMe] default destructor called" << std::endl;
 }
 
 void	PmergeMe::parseInput(char **array) {
@@ -111,7 +111,7 @@ void	PmergeMe::merge_sort(std::vector<int> &arr) {
 		arr.clear();
 		for (std::vector<int>::iterator i = ss.begin(); i != ss.end(); i++)
 			arr.push_back(*i);
-		return ;
+		//return ;
 	}
 }
 
