@@ -6,7 +6,7 @@
 /*   By: gde-alme <gde-alme@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 16:47:04 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/04/24 16:47:05 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/05/29 17:23:46 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ class  PmergeMe {
 	
 		void	parseInput(char **arr);
 		void	sortArray();
-		void	merge_insert(std::vector<int> &arr, std::list<int> &result);
-		void	merge_sort(std::vector<int> &);
+		void	merge_insert_list(std::list<int> &arr);
+		void	merge_insert_vector(std::vector<int> &);
 
 		class	invalidTokenException : public std::exception {
 			virtual const char *what() const throw() {
@@ -63,9 +63,9 @@ class  PmergeMe {
 	protected:
 
 	private:
-		std::list<int>		_sorted;
-		std::vector<int>	_vsorted;
 		std::vector<int>	_unsorted;
+		std::list<int>		_lsorted;
+		std::vector<int>	_vsorted;
 		int			_size;
 };
 

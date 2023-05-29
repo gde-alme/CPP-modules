@@ -6,7 +6,7 @@
 #    By: gde-alme <gde-alme@student.42lisboa.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/24 16:46:47 by gde-alme          #+#    #+#              #
-#    Updated: 2023/04/24 16:46:49 by gde-alme         ###   ########.fr        #
+#    Updated: 2023/05/29 17:17:15 by gde-alme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,7 @@ re: fclean all
 
 test: fclean
 	c++ -D VERBOSE=false src/*.cpp -o $(NAME)
+	nums=$$(shuf -i 1-10000 -n 5000 | tr '\n' ' ') ; ./PmergeMe $$nums
 
 # ================================================= #
 
