@@ -6,7 +6,7 @@
 /*   By: gde-alme <gde-alme@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 16:46:52 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/05/29 17:41:07 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/05/29 19:03:11 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	PmergeMe::merge_insert_list(std::list<int> &arr) {
 		merge_insert_list(left);
 		merge_insert_list(right);
 		arr.clear();
-		arr = left;
+		arr = left;/*
 		for (int i = 0, j = 0; i < (int)right.size(); i++) {
 			while (right[i] > arr[j] && j < (int)arr.size())
 				j++;
@@ -100,6 +100,12 @@ void	PmergeMe::merge_insert_list(std::list<int> &arr) {
 				arr.push_back(right[i]);
 			else
 				arr.insert(arr.begin() + j, right[i]);
+		} */
+		
+		for (std::list<int>::iterator it = arr.begin(), jit = right.begin(); jit != right.end(); jit++) {
+    			while (it != arr.end() && *jit > *it)
+        			++it;
+    			arr.insert(it, *jit);
 		}
 
 	} else {
@@ -158,17 +164,18 @@ void	PmergeMe::merge_insert_vector(std::vector<int> &arr) {
 }
 
 void	PmergeMe::sortArray() {
-/*
+
+	for (std::vector<int>::iterator it = _unsorted.begin(); it != _unsorted.end(); it++) { _lsorted.push_back(*it); }
 	clock_t	start = clock();
-	merge_insert(_unsorted, _sorted);
+	merge_insert_list(_lsorted);
 	clock_t	end = clock();
 
 	double	elapsed_ms_list = double(end - start) / (CLOCKS_PER_SEC/1000.0);
-*/
-	clock_t start = clock();
+
+	start = clock();
 	_vsorted = _unsorted;
 	merge_insert_vector(_vsorted);
-	clock_t end = clock();
+	end = clock();
 
 	double	elapsed_ms_vec = double(end -start) / (CLOCKS_PER_SEC/1000.0);
 
@@ -176,9 +183,9 @@ void	PmergeMe::sortArray() {
 	for (std::vector<int>::iterator it = _unsorted.begin(); it != _unsorted.end(); it++)
 		std::cout << *it << " " << std::flush;
 	std::cout << "\nAfter: " << std::flush;
-	for (std::vector<int>::iterator it = _vsorted.begin(); it != _vsorted.end(); it++)
+	for (std::list<int>::iterator it = _lsorted.begin(); it != _lsorted.end(); it++)
 		std::cout << *it << " " << std::flush;
-	//std::cout << "\n\nTime to process unsorted array using [list] " << elapsed_ms_list << "ms" << std::endl;
+	std::cout << "\n\nTime to process unsorted array using [list] " << elapsed_ms_list << "ms" << std::endl;
 
-	std::cout << "\nTime to process unsorted array using [vector] " << elapsed_ms_vec << "ms" << std::endl << std::endl;
+	std::cout << "\nTime to process unsorted array using [vector] " << std::fixed << std::setprecision(5) << elapsed_ms_vec << "ms" << std::endl << std::endl;
 }
