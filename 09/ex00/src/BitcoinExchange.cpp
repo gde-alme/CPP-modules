@@ -6,7 +6,7 @@
 /*   By: gde-alme <gde-alme@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 16:47:59 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/04/24 16:48:01 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/05/29 16:34:36 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	BitcoinExchange::parseCsv(std::string pathToFile) {
 		}
 		fd.close();
 	} else {
-		std::cerr << "Error: Failed to open file: " << pathToFile << std::endl;
+		std::cerr << "Error: Failed to open file: \"" << pathToFile << "\": " << std::flush;
 		throw	openFileException;
 	}
 }
@@ -149,20 +149,21 @@ void	BitcoinExchange::parseEval(std::string pathToFile) const {
 	double		btcV;
 
 	if (fd.is_open()) {
-		std::getline(fd, curr_line);
 		while (std::getline(fd, curr_line)) {
+			if (line == 1 && curr_line.compare("date | value") == 0)
+				continue ;
 			try { btcA = (double)_getAmountBtc(curr_line); } catch (std::exception &e) { std::cout << "Invalid amount of btc" << std::endl; continue ; }
 			try { btcV = (double)getValue(curr_line); } catch (std::exception &e) { std::cout << e.what() << std::endl; continue ; }
 			cdate = _parseDate(curr_line);
 			std::cout << std::setw(4) << std::setfill('0') << cdate.year << "-"
 				<< std::setw(2) << std::setfill('0') << cdate.month << "-"
 				<< std::setw(2) << std::setfill('0') << cdate.day << std::flush;
-			std::cout << " => " << btcV * btcA << std::endl;
+			std::cout << std::fixed << std::setprecision(4) << " => " << btcV * btcA << std::endl;
 			line++;
 		}
 		fd.close();
 	} else {
-		std::cerr << "Error: Failed to open file: " << pathToFile << std::endl;
+		std::cerr << "Error: Failed to open file: \"" << pathToFile << "\": " << std::flush;
 		throw	openFileException;
 	}
 	

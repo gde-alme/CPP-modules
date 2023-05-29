@@ -6,15 +6,13 @@
 /*   By: gde-alme <gde-alme@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 16:47:52 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/04/24 16:47:53 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/05/29 15:41:11 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/BitcoinExchange.hpp"
 
 int main(int argc, char **argv) {
-
-	std::cout << std::fixed << std::setprecision(4) <<  423.5345f * 42372.67f << std::endl;
 
 	if (argc != 2) {
 		std::cout << "Error: Invalid Usage: ./btc file_to_parse" << std::endl;
@@ -29,6 +27,11 @@ int main(int argc, char **argv) {
 		std::cout << e.what() << std::endl;
 		return (0);
 	}
-	btcExcApi.parseEval(argv[1]);
+	try {
+		btcExcApi.parseEval(argv[1]);
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+		return (0);
+	}
 	return (0);
 }
