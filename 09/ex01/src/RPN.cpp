@@ -6,7 +6,7 @@
 /*   By: gde-alme <gde-alme@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 16:47:22 by gde-alme          #+#    #+#             */
-/*   Updated: 2023/04/24 16:47:23 by gde-alme         ###   ########.fr       */
+/*   Updated: 2023/05/29 16:46:54 by gde-alme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,6 @@ int	RPN::computeString(std::string rpn_string) {
 	if (_stack.size() > 1) { std::cout << "Invalid arithmetix expression" << std::endl; return 1; }
 	num = _stack.top();
 	_stack.pop();
-	std::cout << "rpn = " << num << std::endl;
+	std::cout << "\nrpn = " << num << std::endl << std::endl;
 	return (num);
 }
